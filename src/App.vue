@@ -6,55 +6,68 @@
     </div>
 
     <div class="card-container">
-      <ValueCard v-for="value in values" :key="value.id" :value="value" @hover="setBackground(value)"
-        @open-modal="showModal = true; selectedValue = value" />
+      <ValueCard
+        v-for="value in values"
+        :key="value.id"
+        :value="value"
+        @hover="setBackground(value)"
+        @open-modal="
+          showModal = true
+          selectedValue = value
+        "
+      />
     </div>
 
     <!-- Modal to display detailed content -->
-    <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="showModal = false" />
+    <Modal
+      v-if="showModal"
+      :show="showModal"
+      :selected-value="selectedValue"
+      @close-modal="showModal = false"
+    />
   </div>
 </template>
 
 <script>
-import ValueCard from './components/ValueCard.vue';
-import Modal from './components/Modal.vue';
-import { valuesContent } from './valuesContent.js';
+import ValueCard from './components/ValueCard.vue'
+import Modal from './components/ModalComponent.vue'
+import { valuesContent } from './valuesContent.js'
 
 export default {
   components: {
     ValueCard,
-    Modal,
+    Modal
   },
   data() {
     return {
       values: valuesContent,
       showModal: false,
       selectedValue: null,
-      dynamicBackground: 'default-bg',
-    };
+      dynamicBackground: 'default-bg'
+    }
   },
   methods: {
     setBackground(value) {
       switch (value.name) {
         case 'Self-Efficacy':
-          this.dynamicBackground = 'self-efficacy-bg';
-          break;
+          this.dynamicBackground = 'self-efficacy-bg'
+          break
         case 'Togetherness':
-          this.dynamicBackground = 'togetherness-bg';
-          break;
+          this.dynamicBackground = 'togetherness-bg'
+          break
         case 'Responsibility':
-          this.dynamicBackground = 'responsibility-bg';
-          break;
+          this.dynamicBackground = 'responsibility-bg'
+          break
         case 'Gratitude':
-          this.dynamicBackground = 'gratitude-bg';
-          break;
+          this.dynamicBackground = 'gratitude-bg'
+          break
         default:
-          this.dynamicBackground = 'default-bg';
-          break;
+          this.dynamicBackground = 'default-bg'
+          break
       }
     }
   }
-};
+}
 </script>
 
 <style>
@@ -141,7 +154,6 @@ export default {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 0.5;
