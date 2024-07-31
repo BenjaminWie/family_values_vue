@@ -12,7 +12,7 @@
         :value="value"
         @hover="setBackground(value)"
         @open-modal="
-          showModal = true
+          showModal = true,
           selectedValue = value
         "
       />
