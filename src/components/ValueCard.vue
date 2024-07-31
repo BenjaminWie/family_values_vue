@@ -35,20 +35,20 @@ export default {
 <style scoped>
 .value-card {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  color: white;
+  border-radius: 20px;
+  color: rgb(247, 243, 243);
   text-align: center;
   padding: 20px;
   margin: 20px;
   cursor: pointer;
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.6s ease,
+    box-shadow 0.4s ease;
   transform-style: preserve-3d;
 }
 
 .value-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.6);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 

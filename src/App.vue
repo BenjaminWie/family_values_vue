@@ -19,12 +19,7 @@
     </div>
 
     <!-- Modal to display detailed content -->
-    <Modal
-      v-if="showModal"
-      :show="showModal"
-      :selected-value="selectedValue"
-      @close-modal="showModal = false"
-    />
+    <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="showModal = false" />
   </div>
 </template>
 
@@ -72,27 +67,18 @@ export default {
 
 <style>
 .default-bg {
-  background: linear-gradient(to bottom right, #6a11cb, #2575fc);
-  transition: background 0.5s ease;
+  background: linear-gradient(to bottom right, #e9c10e, #fc9904ab);
+  transition: background 1s ease;
 }
 
 .self-efficacy-bg {
   background: linear-gradient(to bottom right, #34eb83, #349ceb);
-  transition: background 0.5s ease;
+  transition: background 1.5s ease;
 }
 
 .togetherness-bg {
   background: linear-gradient(to bottom right, #ff7e5f, #feb47b);
-  transition: background 0.5s ease;
-}
-
-.background {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+  transition: background 1.5s ease;
 }
 
 .responsibility-bg {
@@ -105,6 +91,7 @@ export default {
   transition: background 0.5s ease;
 }
 
+
 .card-container {
   display: flex;
   flex-direction: column;
@@ -112,6 +99,12 @@ export default {
   align-items: center;
   gap: 20px;
   padding: 20px;
+  width: 100%;
+}
+
+.div {
+  width: 100%;
+  height: auto;
 }
 
 @media (min-width: 768px) {
@@ -120,40 +113,8 @@ export default {
   }
 }
 
-/* Lines between values */
-.lines-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.line {
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.2);
-  transform-origin: left center;
-  animation: pulse 2s infinite;
-}
-
-.line:nth-child(1) {
-  transform: rotate(45deg);
-}
-
-.line:nth-child(2) {
-  transform: rotate(90deg);
-}
-
-.line:nth-child(3) {
-  transform: rotate(-45deg);
-}
-
 @keyframes pulse {
+
   0%,
   100% {
     opacity: 0.5;
