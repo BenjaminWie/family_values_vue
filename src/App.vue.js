@@ -11,41 +11,38 @@ export default (await import('vue')).defineComponent({
             language: 'de',
             showModal: false,
             selectedValue: null,
-            dynamicBackground: 'default-bg'
+            dynamicBackground: 'linear-gradient(45deg, #e9c10e, #fc9904ab)' // Default background gradient
         };
     },
     computed: {
         translatedValues() {
             return valuesContent[this.language];
+        },
+        dynamicStyle() {
+            return {
+                background: this.dynamicBackground || 'linear-gradient(45deg, #e9c10e, #fc9904ab)',
+                minHeight: '100vh',
+                transition: 'background 0.5s ease'
+            };
         }
     },
     methods: {
         setBackground(value) {
-            switch (value.name) {
-                case 'Self-Efficacy':
-                    this.dynamicBackground = 'self-efficacy-bg';
-                    break;
-                case 'Togetherness':
-                    this.dynamicBackground = 'togetherness-bg';
-                    break;
-                case 'Responsibility':
-                    this.dynamicBackground = 'responsibility-bg';
-                    break;
-                case 'Gratitude':
-                    this.dynamicBackground = 'gratitude-bg';
-                    break;
-                default:
-                    this.dynamicBackground = 'default-bg';
-                    break;
-            }
+            this.dynamicBackground = value.gradient || 'linear-gradient(45deg, #e9c10e, #fc9904ab)';
+        },
+        resetBackground() {
+            this.dynamicBackground = 'linear-gradient(45deg, #e9c10e, #fc9904ab)';
         },
         setLanguage(lang) {
-            if (lang = 'de') {
-                this.language = lang;
-            }
+            this.language = lang;
+        },
+        openModal(value) {
+            this.showModal = true;
+            this.selectedValue = value;
         }
     }
 });
+;
 
 function __VLS_template() {
     let __VLS_ctx;
@@ -58,35 +55,56 @@ function __VLS_template() {
     // CSS variable injection 
     // CSS variable injection end 
     let __VLS_resolvedLocalAndGlobalComponents;
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ((['background', __VLS_ctx.dynamicBackground])) }, });
-    __VLS_styleScopedClasses = (['background', dynamicBackground]);
-    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("card-container") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ style: ((__VLS_ctx.dynamicStyle)) }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("language-switcher") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ onClick: (...[$event]) => {
+                __VLS_ctx.setLanguage('en');
+                // @ts-ignore
+                [dynamicStyle, setLanguage,];
+            } }, "aria-label": ("Set language to English"), });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ onClick: (...[$event]) => {
+                __VLS_ctx.setLanguage('de');
+                // @ts-ignore
+                [setLanguage,];
+            } }, "aria-label": ("Set language to German"), });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("values-container") }, });
     for (const [value] of __VLS_getVForSourceType((__VLS_ctx.translatedValues))) {
         // @ts-ignore
         const __VLS_0 = {}
             .ValueCard;
         ({}.ValueCard);
+        ({}.ValueCard);
+        __VLS_components.ValueCard;
         __VLS_components.ValueCard;
         // @ts-ignore
-        [ValueCard,];
+        [ValueCard, ValueCard,];
         // @ts-ignore
-        const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0({ ...{ 'onHover': {} }, ...{ 'onOpenModal': {} }, key: ((value.id)), value: ((value)), }));
-        const __VLS_2 = __VLS_1({ ...{ 'onHover': {} }, ...{ 'onOpenModal': {} }, key: ((value.id)), value: ((value)), }, ...__VLS_functionalComponentArgsRest(__VLS_1));
-        ({}({ ...{ 'onHover': {} }, ...{ 'onOpenModal': {} }, key: ((value.id)), value: ((value)), }));
+        const __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0({ ...{ 'onMouseenter': {} }, ...{ 'onMouseleave': {} }, ...{ 'onOpenModal': {} }, ...{ 'onKeyup': {} }, key: ((value.id)), value: ((value)), tabindex: ("0"), "aria-label": ("Open detailed view of {{ value.name }}"), }));
+        const __VLS_2 = __VLS_1({ ...{ 'onMouseenter': {} }, ...{ 'onMouseleave': {} }, ...{ 'onOpenModal': {} }, ...{ 'onKeyup': {} }, key: ((value.id)), value: ((value)), tabindex: ("0"), "aria-label": ("Open detailed view of {{ value.name }}"), }, ...__VLS_functionalComponentArgsRest(__VLS_1));
+        ({}({ ...{ 'onMouseenter': {} }, ...{ 'onMouseleave': {} }, ...{ 'onOpenModal': {} }, ...{ 'onKeyup': {} }, key: ((value.id)), value: ((value)), tabindex: ("0"), "aria-label": ("Open detailed view of {{ value.name }}"), }));
         let __VLS_6;
         const __VLS_7 = {
-            onHover: (...[$event]) => {
+            onMouseenter: (...[$event]) => {
                 __VLS_ctx.setBackground(value);
                 // @ts-ignore
-                [dynamicBackground, translatedValues, setBackground,];
+                [translatedValues, setBackground,];
             }
         };
         const __VLS_8 = {
+            onMouseleave: (__VLS_ctx.resetBackground)
+        };
+        const __VLS_9 = {
             onOpenModal: (...[$event]) => {
-                __VLS_ctx.showModal = true,
-                    __VLS_ctx.selectedValue = value;
+                __VLS_ctx.openModal(value);
                 // @ts-ignore
-                [showModal, selectedValue,];
+                [resetBackground, openModal,];
+            }
+        };
+        const __VLS_10 = {
+            onKeyup: (...[$event]) => {
+                __VLS_ctx.openModal(value);
+                // @ts-ignore
+                [openModal,];
             }
         };
         const __VLS_5 = __VLS_nonNullable(__VLS_pickFunctionalComponentCtx(__VLS_0, __VLS_2));
@@ -95,18 +113,20 @@ function __VLS_template() {
     }
     if (__VLS_ctx.showModal) {
         // @ts-ignore
-        const __VLS_9 = {}
+        const __VLS_11 = {}
             .Modal;
         ({}.Modal);
+        ({}.Modal);
+        __VLS_components.Modal;
         __VLS_components.Modal;
         // @ts-ignore
-        [Modal,];
+        [Modal, Modal,];
         // @ts-ignore
-        const __VLS_10 = __VLS_asFunctionalComponent(__VLS_9, new __VLS_9({ ...{ 'onCloseModal': {} }, show: ((__VLS_ctx.showModal)), selectedValue: ((__VLS_ctx.selectedValue)), }));
-        const __VLS_11 = __VLS_10({ ...{ 'onCloseModal': {} }, show: ((__VLS_ctx.showModal)), selectedValue: ((__VLS_ctx.selectedValue)), }, ...__VLS_functionalComponentArgsRest(__VLS_10));
+        const __VLS_12 = __VLS_asFunctionalComponent(__VLS_11, new __VLS_11({ ...{ 'onCloseModal': {} }, show: ((__VLS_ctx.showModal)), selectedValue: ((__VLS_ctx.selectedValue)), }));
+        const __VLS_13 = __VLS_12({ ...{ 'onCloseModal': {} }, show: ((__VLS_ctx.showModal)), selectedValue: ((__VLS_ctx.selectedValue)), }, ...__VLS_functionalComponentArgsRest(__VLS_12));
         ({}({ ...{ 'onCloseModal': {} }, show: ((__VLS_ctx.showModal)), selectedValue: ((__VLS_ctx.selectedValue)), }));
-        let __VLS_15;
-        const __VLS_16 = {
+        let __VLS_17;
+        const __VLS_18 = {
             onCloseModal: (...[$event]) => {
                 if (!((__VLS_ctx.showModal)))
                     return;
@@ -115,12 +135,13 @@ function __VLS_template() {
                 [showModal, showModal, showModal, selectedValue,];
             }
         };
-        const __VLS_14 = __VLS_nonNullable(__VLS_pickFunctionalComponentCtx(__VLS_9, __VLS_11));
-        let __VLS_12;
-        let __VLS_13;
+        const __VLS_16 = __VLS_nonNullable(__VLS_pickFunctionalComponentCtx(__VLS_11, __VLS_13));
+        let __VLS_14;
+        let __VLS_15;
     }
     if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
-        __VLS_styleScopedClasses['card-container'];
+        __VLS_styleScopedClasses['language-switcher'];
+        __VLS_styleScopedClasses['values-container'];
     }
     var __VLS_slots;
     return __VLS_slots;
