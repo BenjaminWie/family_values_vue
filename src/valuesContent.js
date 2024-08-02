@@ -2,7 +2,7 @@ export const valuesContent = {
     de: [
         {
             id: 1,
-            name: 'Selbstwirksamkeit',
+            name: 'Selbstwirksam',
             quote: '„Jeder Mensch ist der Architekt seiner eigenen Zukunft. Nur wer an sich glaubt, kann Berge versetzen.“ - Viktor Frankl',
             author: 'Viktor Frankl',
             narratives: [
@@ -44,7 +44,7 @@ export const valuesContent = {
         },
         {
             id: 2,
-            name: 'Gemeinsamkeit',
+            name: 'Gemeinsam',
             quote: '„Einheit ist Stärke… wenn es Teamwork und Zusammenarbeit gibt, können wunderbare Dinge erreicht werden.“ - Mattie Stepanek',
             author: 'Mattie Stepanek',
             narratives: [
@@ -86,7 +86,7 @@ export const valuesContent = {
         },
         {
             id: 3,
-            name: 'Verantwortung',
+            name: 'Verantwortlich',
             quote: '„Unser Ziel muss es sein, das Leben auf dieser Erde zu bewahren und zu verbessern, und das erfordert eine Verantwortung von jedem von uns.“ - Jane Goodall',
             author: 'Jane Goodall',
             narratives: [
@@ -128,7 +128,7 @@ export const valuesContent = {
         },
         {
             id: 4,
-            name: 'Dankbarkeit',
+            name: 'Dankbar',
             quote: '„Dankbarkeit ist nicht nur die größte aller Tugenden, sondern auch die Mutter aller anderen.“ - Cicero',
             author: 'Cicero',
             narratives: [
