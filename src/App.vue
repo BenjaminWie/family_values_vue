@@ -12,8 +12,8 @@
         v-for="value in translatedValues"
         :key="value.id"
         :value="value"
-        @mouseenter="setBackground(value)"  <!-- Trigger background change on mouse enter -->
-        @mouseleave="resetBackground"      <!-- Reset background when mouse leaves the card -->
+        @mouseenter="setBackground(value)"
+        @mouseleave="resetBackground"
         @open-modal="openModal(value)"
         tabindex="0"
         @keyup.enter="openModal(value)"
@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import ValueCard from './components/ValueCard.vue'
-import Modal from './components/ModalComponent.vue'
-import { valuesContent } from './valuesContent.js'
+import ValueCard from './components/ValueCard.vue';
+import Modal from './components/ModalComponent.vue';
+import { valuesContent } from './valuesContent.js';
 
 export default {
   components: {
@@ -70,7 +70,7 @@ export default {
       }
     },
     resetBackground() {
-      this.dynamicBackground = 'default-bg';  // Optional: reset background when mouse leaves
+      this.dynamicBackground = 'default-bg';
     },
     setLanguage(lang) {
       this.language = lang;
@@ -80,7 +80,7 @@ export default {
       this.selectedValue = value;
     }
   }
-}
+};
 </script>
 
 <style>
@@ -204,7 +204,7 @@ export default {
   transition: opacity 0.3s ease;
 }
 
-.modal-enter, .modal-leave-to /* .modal-leave-active in <2.1.8 */ {
+.modal-enter, .modal-leave-to {
   opacity: 0;
 }
 
