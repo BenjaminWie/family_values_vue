@@ -5,6 +5,7 @@ export const valuesContent = {
             name: 'Selbstwirksam',
             quote: '„Jeder Mensch ist der Architekt seiner eigenen Zukunft. Nur wer an sich glaubt, kann Berge versetzen.“ - Viktor Frankl',
             author: 'Viktor Frankl',
+            gradient: "linear-gradient(45deg, #34eb83, #349ceb)",
             narratives: [
                 {
                     title: 'Technologie und Zukunftskompetenzen',
@@ -47,6 +48,7 @@ export const valuesContent = {
             name: 'Gemeinsam',
             quote: '„Einheit ist Stärke… wenn es Teamwork und Zusammenarbeit gibt, können wunderbare Dinge erreicht werden.“ - Mattie Stepanek',
             author: 'Mattie Stepanek',
+            gradient: "linear-gradient(45deg, #ff9a8b, #ffc3a0)",
             narratives: [
                 {
                     title: 'Familienzusammenhalt und Krisenbewältigung',
@@ -89,6 +91,7 @@ export const valuesContent = {
             name: 'Verantwortlich',
             quote: '„Unser Ziel muss es sein, das Leben auf dieser Erde zu bewahren und zu verbessern, und das erfordert eine Verantwortung von jedem von uns.“ - Jane Goodall',
             author: 'Jane Goodall',
+            gradient: "linear-gradient(45deg, #4b5320, #8b4513)",
             narratives: [
                 {
                     title: 'Verantwortung im Klimaschutz',
@@ -131,6 +134,7 @@ export const valuesContent = {
             name: 'Dankbar',
             quote: '„Dankbarkeit ist nicht nur die größte aller Tugenden, sondern auch die Mutter aller anderen.“ - Cicero',
             author: 'Cicero',
+            gradient: "linear-gradient(45deg, #d3a4ff, #ffd1dc)",
             narratives: [
                 {
                     title: 'Dankbarkeit und mentale Gesundheit',
@@ -175,6 +179,7 @@ export const valuesContent = {
             name: 'Self-Efficacy',
             quote: '“Man is the architect of his own future. Only those who believe in themselves can move mountains.” - Viktor Frankl',
             author: 'Viktor Frankl',
+            gradient: "linear-gradient(45deg, #34eb83, #349ceb)",
             narratives: [
                 {
                     title: 'Technology and Future Skills',
@@ -217,6 +222,7 @@ export const valuesContent = {
             name: 'Togetherness',
             quote: '“Unity is strength... when there is teamwork and collaboration, wonderful things can be achieved.” - Mattie Stepanek',
             author: 'Mattie Stepanek',
+            gradient: "linear-gradient(45deg, #ff9a8b, #ffc3a0)",
             narratives: [
                 {
                     title: 'Family Cohesion and Crisis Management',
@@ -259,6 +265,7 @@ export const valuesContent = {
             name: 'Responsibility',
             quote: '“Our goal must be to preserve and improve life on this Earth, and that requires responsibility from each of us.” - Jane Goodall',
             author: 'Jane Goodall',
+            gradient: "linear-gradient(45deg, #4b5320, #8b4513)",
             narratives: [
                 {
                     title: 'Responsibility in Climate Protection',
@@ -301,6 +308,7 @@ export const valuesContent = {
             name: 'Gratitude',
             quote: '“Gratitude is not only the greatest of virtues but the parent of all others.” - Cicero',
             author: 'Cicero',
+            gradient: "linear-gradient(45deg, #d3a4ff, #ffd1dc)",
             narratives: [
                 {
                     title: 'Gratitude and Mental Health',

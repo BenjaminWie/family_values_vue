@@ -1,5 +1,5 @@
 <template>
-  <div :class="['background', dynamicBackground]">
+  <div :style="dynamicStyle">
     <!-- Language Switcher in Top Right -->
     <div class="language-switcher">
       <button @click="setLanguage('en')" aria-label="Set language to English">EN</button>
@@ -12,17 +12,22 @@
         v-for="value in translatedValues"
         :key="value.id"
         :value="value"
-        @mouseenter="setBackground(value)"
+        @mouseenter="setBackground(value)" 
         @mouseleave="resetBackground"
         @open-modal="openModal(value)"
         tabindex="0"
         @keyup.enter="openModal(value)"
         aria-label="Open detailed view of {{ value.name }}"
-      />
+      ></ValueCard>
     </div>
 
     <!-- Modal for Detailed View -->
-    <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="showModal = false" />
+    <Modal 
+      v-if="showModal" 
+      :show="showModal" 
+      :selected-value="selectedValue" 
+      @close-modal="showModal = false" 
+    ></Modal>
   </div>
 </template>
 
@@ -41,36 +46,27 @@ export default {
       language: 'de',
       showModal: false,
       selectedValue: null,
-      dynamicBackground: 'default-bg'
+      dynamicBackground: 'linear-gradient(45deg, #e9c10e, #fc9904ab)' // Default background gradient
     };
   },
   computed: {
     translatedValues() {
       return valuesContent[this.language];
+    },
+    dynamicStyle() {
+      return {
+        background: this.dynamicBackground || 'linear-gradient(45deg, #e9c10e, #fc9904ab)',
+        minHeight: '100vh', 
+        transition: 'background 0.5s ease' 
+      };
     }
   },
   methods: {
     setBackground(value) {
-      switch (value.name) {
-        case 'Self-Efficacy':
-          this.dynamicBackground = 'self-efficacy-bg';
-          break;
-        case 'Togetherness':
-          this.dynamicBackground = 'togetherness-bg';
-          break;
-        case 'Responsibility':
-          this.dynamicBackground = 'responsibility-bg';
-          break;
-        case 'Gratitude':
-          this.dynamicBackground = 'gratitude-bg';
-          break;
-        default:
-          this.dynamicBackground = 'default-bg';
-          break;
-      }
+      this.dynamicBackground = value.gradient || 'linear-gradient(45deg, #e9c10e, #fc9904ab)';
     },
     resetBackground() {
-      this.dynamicBackground = 'default-bg';
+      this.dynamicBackground = 'linear-gradient(45deg, #e9c10e, #fc9904ab)'; 
     },
     setLanguage(lang) {
       this.language = lang;
@@ -84,18 +80,6 @@ export default {
 </script>
 
 <style>
-/* General Layout */
-.background {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  overflow: hidden;
-}
-
 /* Language Switcher in Top Right */
 .language-switcher {
   position: absolute;
@@ -118,49 +102,6 @@ export default {
   background-color: #2575fc;
 }
 
-/* Backgrounds with Animated Gradients */
-.default-bg {
-  background: linear-gradient(45deg, #e9c10e, #fc9904ab);
-  background-size: 400% 400%;
-  animation: gradientMove 6s ease infinite;
-}
-
-.self-efficacy-bg {
-  background: linear-gradient(45deg, #34eb83, #349ceb);
-  background-size: 400% 400%;
-  animation: gradientMove 4s ease infinite;
-}
-
-.togetherness-bg {
-  background: linear-gradient(45deg, #ff7e5f, #feb47b);
-  background-size: 400% 400%;
-  animation: gradientMove 4s ease infinite;
-}
-
-.responsibility-bg {
-  background: linear-gradient(45deg, #2b5876, #4e4376);
-  background-size: 400% 400%;
-  animation: gradientMove 4s ease infinite;
-}
-
-.gratitude-bg {
-  background: linear-gradient(45deg, #f857a6, #ff5858);
-  background-size: 400% 400%;
-  animation: gradientMove 4s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 /* Value Cards Container */
 .values-container {
   display: flex;
@@ -174,7 +115,7 @@ export default {
 
 /* Responsive Design for Value Cards */
 .value-card {
-  flex: 1 1 calc(50% - 20px); /* 50% width minus gap on larger screens */
+  flex: 1 1 calc(50% - 20px); 
   max-width: 45%;
   min-width: 200px;
   margin: 10px;
@@ -194,7 +135,7 @@ export default {
 
 @media (max-width: 768px) {
   .value-card {
-    flex: 1 1 100%; /* Full width on smaller screens */
+    flex: 1 1 100%; 
     max-width: 100%;
   }
 }
