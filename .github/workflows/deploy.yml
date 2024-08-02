@@ -3,19 +3,20 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your main branch
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Update to v3
+        uses: actions/setup-node@v2
         with:
-          node-version: '20'  # Update to Node.js version 20
+          node-version: '16'
 
       - name: Install dependencies
         run: npm install
@@ -24,4 +25,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PAGE_TOKEN }}
+          publish_dir: ./dist
