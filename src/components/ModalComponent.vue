@@ -6,7 +6,11 @@
       <p class="modal-quote">“{{ selectedValue.quote }}”</p>
 
       <!-- Display Narratives -->
-      <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="narrative-box">
+      <div
+        v-for="(narrative, index) in selectedValue.narratives"
+        :key="index"
+        class="narrative-box"
+      >
         <h3>{{ narrative.title }}</h3>
         <p>{{ narrative.content }}</p>
       </div>

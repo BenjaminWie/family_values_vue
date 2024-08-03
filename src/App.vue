@@ -12,29 +12,29 @@
         v-for="value in translatedValues"
         :key="value.id"
         :value="value"
-        @mouseenter="expandCard(value, $event)" 
-        @mouseleave="shrinkCard"
+        @mouseenter="setBackground(value)"
+        @mouseleave="resetBackground"
+        @open-modal="openModal(value)"
         tabindex="0"
         @keyup.enter="openModal(value)"
-        :class="{ 'expanded': expandedValue && expandedValue.id === value.id }"
         aria-label="Open detailed view of {{ value.name }}"
       ></ValueCard>
     </div>
 
     <!-- Modal for Detailed View -->
-    <Modal 
-      v-if="showModal" 
-      :show="showModal" 
-      :selected-value="selectedValue" 
-      @close-modal="closeModal" 
+    <Modal
+      v-if="showModal"
+      :show="showModal"
+      :selected-value="selectedValue"
+      @close-modal="closeModal"
     ></Modal>
   </div>
 </template>
 
 <script>
-import ValueCard from './components/ValueCard.vue';
-import Modal from './components/ModalComponent.vue';
-import { valuesContent } from './valuesContent.js';
+import ValueCard from './components/ValueCard.vue'
+import Modal from './components/ModalComponent.vue'
+import { valuesContent } from './valuesContent.js'
 
 export default {
   components: {
@@ -46,13 +46,12 @@ export default {
       language: 'de',
       showModal: false,
       selectedValue: null,
-      dynamicBackground: 'linear-gradient(45deg, #e9c10e, #fc9904ab)', // Default background gradient
-      expandedValue: null, // Store the currently expanded value
-    };
+      dynamicBackground: 'linear-gradient(45deg, #e9c10e, #fc9904ab)' // Default background gradient
+    }
   },
   computed: {
     translatedValues() {
-      return valuesContent[this.language];
+      return valuesContent[this.language]
     },
     dynamicStyle() {
       return {
@@ -63,50 +62,44 @@ export default {
         justifyContent: 'center',
         alignItems: 'center',
         transition: 'background 0.5s ease'
-      };
+      }
     }
   },
   methods: {
     setBackground(value) {
-      this.dynamicBackground = value.gradient || 'linear-gradient(45deg, #e9c10e, #fc9904ab)';
+      this.dynamicBackground = value.gradient || 'linear-gradient(45deg, #e9c10e, #fc9904ab)'
     },
     resetBackground() {
-      this.dynamicBackground = 'linear-gradient(45deg, #e9c10e, #fc9904ab)'; 
+      this.dynamicBackground = 'linear-gradient(45deg, #e9c10e, #fc9904ab)'
     },
     setLanguage(lang) {
-      this.language = lang;
-      localStorage.setItem('selectedLanguage', lang); // Persist language choice
+      this.language = lang
+      localStorage.setItem('selectedLanguage', lang) // Persist language choice
     },
     openModal(value) {
-      this.showModal = true;
-      this.selectedValue = value;
+      this.showModal = true
+      this.selectedValue = value
       this.$nextTick(() => {
-        const modalElement = this.$refs.modal;
+        const modalElement = this.$refs.modal
         if (modalElement) {
-          modalElement.focus(); // Set focus to modal for accessibility
+          modalElement.focus() // Set focus to modal for accessibility
         }
-      });
+      })
     },
     closeModal() {
-      this.showModal = false;
+      this.showModal = false
       this.$nextTick(() => {
-        document.activeElement.blur(); // Return focus to trigger element
-      });
-    },
-    expandCard(value) {
-      this.expandedValue = value;
-    },
-    shrinkCard() {
-      this.expandedValue = null;
+        document.activeElement.blur() // Return focus to trigger element
+      })
     }
   },
   created() {
-    const savedLanguage = localStorage.getItem('selectedLanguage');
+    const savedLanguage = localStorage.getItem('selectedLanguage')
     if (savedLanguage) {
-      this.language = savedLanguage;
+      this.language = savedLanguage
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -139,42 +132,26 @@ export default {
 
 /* Value Cards Container */
 .values-container {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+  justify-content: center; /* Center items in the container */
+  align-items: center; /* Vertically center items */
+  position: relative;
   width: 100%;
   max-width: 1200px;
   padding: 20px;
 }
 
-/* Responsive Design for Value Cards */
-.value-card {
-  background: white;
-  padding: 16px;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.6s ease; /* Smooth transition for all properties */
-  font-weight: bold;
-  color: #e9c10e; /* Updated text color for better legibility */
-}
-
-.value-card.expanded {
-  transform: scale(1.2); /* Scale up the hovered or clicked card */
-  z-index: 100; /* Bring the expanded card to the front */
-}
-
-.value-card:focus-visible {
-  outline: 2px solid #6a11cb;
-}
 
 /* Modal Transitions */
-.modal-enter-active, .modal-leave-active {
+.modal-enter-active,
+.modal-leave-active {
   transition: opacity 0.3s ease;
 }
 
-.modal-enter, .modal-leave-to {
+.modal-enter,
+.modal-leave-to {
   opacity: 0;
 }
 
