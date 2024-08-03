@@ -117,7 +117,7 @@ export default {
 .quote {
   margin-top: 10px;
   font-size: 16px;
-  color: #fff;
+  color: #534949;
   opacity: 0;
   transition: opacity 0.3s ease;
   font-style: italic;

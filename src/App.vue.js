@@ -22,6 +22,10 @@ export default (await import('vue')).defineComponent({
             return {
                 background: this.dynamicBackground || 'linear-gradient(45deg, #e9c10e, #fc9904ab)',
                 minHeight: '100vh',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
                 transition: 'background 0.5s ease'
             };
         }

@@ -23,11 +23,14 @@ function __VLS_template() {
     if (__VLS_ctx.show) {
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ onClick: (__VLS_ctx.close) }, ...{ class: ("modal-backdrop") }, });
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("modal-content") }, });
-        __VLS_elementAsFunction(__VLS_intrinsicElements.h2, __VLS_intrinsicElements.h2)({});
+        __VLS_elementAsFunction(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({ ...{ onClick: (__VLS_ctx.close) }, ...{ class: ("close-button") }, "aria-label": ("Close modal"), });
+        // @ts-ignore
+        [show, close, close,];
+        __VLS_elementAsFunction(__VLS_intrinsicElements.h2, __VLS_intrinsicElements.h2)({ ...{ class: ("modal-title") }, });
         (__VLS_ctx.selectedValue.name);
         // @ts-ignore
-        [show, close, selectedValue,];
-        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
+        [selectedValue,];
+        __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("modal-quote") }, });
         (__VLS_ctx.selectedValue.quote);
         // @ts-ignore
         [selectedValue,];
@@ -53,6 +56,9 @@ function __VLS_template() {
     if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
         __VLS_styleScopedClasses['modal-backdrop'];
         __VLS_styleScopedClasses['modal-content'];
+        __VLS_styleScopedClasses['close-button'];
+        __VLS_styleScopedClasses['modal-title'];
+        __VLS_styleScopedClasses['modal-quote'];
         __VLS_styleScopedClasses['narrative-box'];
         __VLS_styleScopedClasses['story-box'];
     }
