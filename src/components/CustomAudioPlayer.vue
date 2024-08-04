@@ -1,10 +1,10 @@
 <template>
     <div class="audio-player">
-        <div class="controls">
-            <button @click="togglePlayPause" :class="{ playing: isPlaying }">
-                <span v-if="!isPlaying">&#9658;</span> <!-- Play Icon -->
-                <span v-else>&#10074;&#10074;</span> <!-- Pause Icon -->
-            </button>
+        <button @click="togglePlayPause" :class="{ playing: isPlaying }" class="play-pause-button">
+            <span v-if="!isPlaying">&#9658;</span> <!-- Play Icon -->
+            <span v-else>&#10074;&#10074;</span> <!-- Pause Icon -->
+        </button>
+        <div class="progress-container">
             <input type="range" min="0" :max="audioDuration" v-model="currentTime" @input="seekAudio"
                 class="progress-bar" />
             <div class="time">
@@ -15,7 +15,7 @@
             <input type="range" min="0" max="1" step="0.01" v-model="volume" @input="adjustVolume"
                 class="volume-slider" />
         </div>
-        <audio ref="audioPlayer" :src="audioSrc" @timeupdate="updateTime"></audio>
+        <audio ref="audioPlayer" :src="audioSrc" @loadedmetadata="onAudioLoaded" @timeupdate="updateTime"></audio>
     </div>
 </template>
 
@@ -23,20 +23,11 @@
 export default {
     data() {
         return {
-            audioSrc: "@assets/family.mp3",
+            audioSrc: require('@/assets/family.mp3'), // Correctly referencing the audio file in assets
             isPlaying: false,
             currentTime: 0,
             audioDuration: 0,
             volume: 1,
-        };
-    },
-    mounted() {
-        const audio = this.$refs.audioPlayer;
-        audio.volume = this.volume;
-
-        // Load metadata to get the duration
-        audio.onloadedmetadata = () => {
-            this.audioDuration = audio.duration;
         };
     },
     methods: {
@@ -57,6 +48,9 @@ export default {
         },
         adjustVolume() {
             this.$refs.audioPlayer.volume = this.volume;
+        },
+        onAudioLoaded() {
+            this.audioDuration = this.$refs.audioPlayer.duration;
         },
         formatTime(time) {
             const minutes = Math.floor(time / 60);
@@ -80,51 +74,59 @@ export default {
     align-items: center;
 }
 
-.controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.controls button {
+.play-pause-button {
     background: none;
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 32px;
     cursor: pointer;
     outline: none;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
-.controls button.playing {
-    transform: scale(1.5);
-    animation: pulse 1s infinite;
-}
-
-.controls button span {
-    display: inline-block;
-    transition: transform 0.2s;
-}
-
-.controls button.playing span {
+.play-pause-button.playing {
     transform: scale(1.2);
+    animation: pulse 1.5s infinite;
 }
 
-.controls .progress-bar {
-    width: 60%;
+@keyframes pulse {
+    0% {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+
+    50% {
+        transform: scale(1.3);
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+    }
+
+    100% {
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    }
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    width: 80%;
     -webkit-appearance: none;
     height: 5px;
     background: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     outline: none;
-    margin: 0 10px;
+    margin-right: 10px;
 }
 
-.controls .progress-bar::-webkit-slider-thumb {
+.progress-bar::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: white;
     border-radius: 50%;
     cursor: pointer;
@@ -138,7 +140,7 @@ export default {
 
 .volume-control {
     margin-top: 15px;
-    width: 80%;
+    width: 100%;
 }
 
 .volume-slider {
@@ -158,22 +160,5 @@ export default {
     border-radius: 50%;
     cursor: pointer;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1.5);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
-
-    50% {
-        transform: scale(1.6);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
-    }
-
-    100% {
-        transform: scale(1.5);
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
-    }
 }
 </style>

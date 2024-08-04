@@ -2,23 +2,39 @@
   <div v-if="show" class="modal-backdrop" @click.self="close">
     <div class="modal-content">
       <button class="close-button" @click="close" aria-label="Close modal">✕</button>
-      <h2 class="modal-title">{{ selectedValue.name }}</h2>
-      <p class="modal-quote">“{{ selectedValue.quote }}”</p>
 
-      <!-- Display Narratives -->
-      <div
-        v-for="(narrative, index) in selectedValue.narratives"
-        :key="index"
-        class="narrative-box"
-      >
-        <h3>{{ narrative.title }}</h3>
-        <p>{{ narrative.content }}</p>
+      <!-- Value Header with Background Gradient and Image -->
+      <div class="value-header" :style="{ background: selectedValue.gradient }">
+        <img :src="selectedValue.image" alt="Value Image" class="value-image" />
+        <div class="value-text">
+          <h2 class="value-title">{{ selectedValue.name }}</h2>
+          <p class="value-quote">“{{ selectedValue.quote }}”</p>
+          <p class="value-author">- {{ selectedValue.author }}</p>
+        </div>
       </div>
 
       <!-- Display Stories -->
-      <div v-for="(story, index) in selectedValue.stories" :key="index" class="story-box">
-        <h3>{{ story.title }}</h3>
-        <p>{{ story.content }}</p>
+      <div class="story-section">
+        <h3 class="section-title">Stories</h3>
+        <div v-for="(story, index) in selectedValue.stories" :key="index" class="story-card">
+          <!-- <img v-if="story.image" :src="story.image" alt="Story Image" class="story-image" /> -->
+          <div class="story-content">
+            <h4>{{ story.title }}</h4>
+            <p>{{ story.content }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display Narratives -->
+      <div class="narrative-section">
+        <h3 class="section-title">Narratives</h3>
+        <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="narrative-card">
+          <!-- <img v-if="narrative.image" :src="narrative.image" alt="Narrative Image" class="narrative-image" /> -->
+          <div class="narrative-content">
+            <h4>{{ narrative.title }}</h4>
+            <p>{{ narrative.content }}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -58,8 +74,8 @@ export default {
   background: white;
   color: #333;
   border-radius: 10px;
-  padding: 20px;
-  max-width: 600px;
+  padding: 0;
+  max-width: 800px;
   width: 100%;
   text-align: left;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -82,38 +98,101 @@ export default {
   color: #000;
 }
 
-.modal-title {
+/* Value Header */
+.value-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px 10px 0 0;
+  color: white;
+}
+
+.value-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.value-text {
+  flex: 1;
+}
+
+.value-title {
+  font-size: 2rem;
+  margin: 0 0 10px;
+}
+
+.value-quote {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin: 0 0 5px;
+}
+
+.value-author {
+  font-size: 1rem;
+}
+
+/* Narrative and Story Sections */
+.section-title {
   font-size: 1.8rem;
-  margin-bottom: 10px;
+  margin: 20px 20px 10px;
   color: #2c3e50;
 }
 
-.modal-quote {
-  font-size: 1.2rem;
-  font-style: italic;
-  margin-bottom: 20px;
-  color: #7f8c8d;
+.narrative-section,
+.story-section {
+  padding: 20px;
 }
 
-.narrative-box,
-.story-box {
+.narrative-card,
+.story-card {
   margin-top: 20px;
   padding: 15px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
 }
 
-.narrative-box h3,
-.story-box h3 {
+.narrative-card {
+  flex-direction: row;
+}
+
+.story-card {
+  flex-direction: row;
+}
+
+/* Commented out Narrative and Story Images */
+/*
+.narrative-image, 
+.story-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+*/
+
+.narrative-content,
+.story-content {
+  flex: 1;
+}
+
+.narrative-card h4,
+.story-card h4 {
   margin-top: 0;
   font-size: 1.4rem;
   color: #34495e;
 }
 
-.narrative-box p,
-.story-box p {
+.narrative-card p,
+.story-card p {
   font-size: 1rem;
   color: #555;
+  margin: 5px 0 0;
 }
 </style>

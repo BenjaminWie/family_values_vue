@@ -1,55 +1,50 @@
 <template>
-  <div :style="dynamicStyle">
-    <!-- Language Switcher in Top Right -->
-    <div class="language-switcher">
-      <button @click="setLanguage('en')" aria-label="Set language to English">EN</button>
-      <button @click="setLanguage('de')" aria-label="Set language to German">DE</button>
-    </div>
-
-    <!-- Welcome Screen -->
-    <section class="welcome-section">
-      <header>
-        <h1 class="main-header">Welcome to Our Vue Application</h1>
-        <p class="subtitle">This application showcases the power and flexibility of Vue.js.</p>
-      </header>
-    </section>
-
-    <!-- Value Cards Container -->
-    <section class="values-container">
-      <ValueCard v-for="value in translatedValues" :key="value.id" :value="value" @mouseenter="setBackground(value)"
-        @mouseleave="resetBackground" @open-modal="openModal(value)" tabindex="0" @keyup.enter="openModal(value)"
-        aria-label="Open detailed view of {{ value.name }}"></ValueCard>
-    </section>
-
-    <!-- Modal for Detailed View -->
-    <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
-
-
-    <!-- Audio Player -->
-    <section class="audio-section">
-      <CustomAudioPlayer />
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer-section">
-      <div class="footer-left">
-        <p class="footer-header">Who:</p>
-        <p class="footer-text">Created by [Your Name]</p>
-        <p class="footer-header">Why:</p>
-        <p class="footer-text">To demonstrate a simple yet powerful Vue.js application.</p>
-      </div>
-      <div class="footer-right">
-        <p class="footer-legal">© 2024 [Your Name]. All rights reserved.</p>
-      </div>
-    </footer>
+  <!-- Language Switcher in Top Right -->
+  <div class="language-switcher">
+    <button @click="setLanguage('en')" aria-label="Set language to English">EN</button>
+    <button @click="setLanguage('de')" aria-label="Set language to German">DE</button>
   </div>
+
+  <!-- Welcome Screen -->
+  <section class="welcome-section">
+    <header>
+      <h1 class="main-header">Familienwerte</h1>
+      <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
+    </header>
+  </section>
+  <!-- Value Cards Container -->
+  <section class="values-container">
+    <ValueCard :style="dynamicStyle" v-for="value in translatedValues" :key="value.id" :value="value"
+      @mouseenter="setBackground(value)" @mouseleave="resetBackground" @open-modal="openModal(value)" tabindex="0"
+      @keyup.enter="openModal(value)" aria-label="Open detailed view of {{ value.name }}"></ValueCard>
+  </section>
+
+  <!-- Modal for Detailed View -->
+  <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
+
+  <!--CustomAudioPlayer /-->
+
+  <!-- Footer -->
+  <footer class="footer-section">
+    <div class="footer-left">
+      <p class="footer-header">Who</p>
+      <p class="footer-text">Familie Wiedenbrueg</p>
+      <p class="footer-header">Why</p>
+      <p class="footer-text">To keep in mind the values we gave our self and why we have choosen them.</p>
+    </div>
+    <div class="footer-right">
+      <p class="footer-legal">© 2024 Wiedenbrueg.
+        <br> All rights reserved.
+      </p>
+    </div>
+  </footer>
 </template>
 
 <script>
 import ValueCard from './components/ValueCard.vue'
 import Modal from './components/ModalComponent.vue'
 import { valuesContent } from './valuesContent.js'
-import CustomAudioPlayer from './components/CustomAudioPlayer.vue';
+import CustomAudioPlayer from './components/CustomAudioPlayer.vue'
 
 export default {
   components: {
@@ -72,12 +67,13 @@ export default {
     dynamicStyle() {
       return {
         background: this.dynamicBackground || 'linear-gradient(45deg, #e9c10e, #fc9904ab)',
-        minHeight: '100vh',
+        height: 'fit-content',
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        transition: 'background 0.5s ease'
+        transition: 'background 2.5s ease-in-out'
       }
     }
   },
@@ -119,6 +115,26 @@ export default {
 </script>
 
 <style scoped>
+#welcome-section {
+  text-align: center;
+  padding: 50px 20px;
+  position: fixed;
+  width: 100%;
+  top: 30;
+}
+
+.main-header {
+  font-size: 3em;
+  margin-bottom: 10px;
+  margin-top: 40px;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  color: #555;
+  margin-bottom: 0px;
+}
+
 /* Language Switcher in Top Right */
 .language-switcher {
   position: absolute;
@@ -146,9 +162,8 @@ export default {
   outline: 2px solid #2575fc;
 }
 
-/* Value Cards Container */
 .values-container {
-  display: flex;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   justify-content: center;
@@ -157,7 +172,6 @@ export default {
   /* Vertically center items */
   position: relative;
   width: 100%;
-  max-width: 1200px;
   padding: 20px;
 }
 
@@ -204,5 +218,54 @@ export default {
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+
+footer.footer-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #1a1a1a;
+  color: #fff;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  position: fixed;
+}
+
+.footer-left {
+  text-align: left end;
+}
+
+.footer-right {
+  text-align: end;
+  color: #ccc;
+}
+
+.footer-header {
+  font-size: 1em;
+  color: #f8f5f5;
+  font-style: bold;
+  margin-bottom: 5px;
+}
+
+.footer-text {
+  font-size: 1.2em;
+  color: #c0b09c;
+  /* Custom text color for the "Who" and "Why" section */
+  margin-bottom: 5px;
+}
+
+.footer-legal {
+  font-size: 1em;
+  color: #ccc;
+}
+
+@media (max-width: 600px) {
+  .values-container {
+    grid-template-columns: 1fr;
+    /* Stack items vertically on smaller screens */
+  }
 }
 </style>

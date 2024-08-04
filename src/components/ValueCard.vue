@@ -36,16 +36,10 @@ export default {
 <style scoped>
 /* Hover effect applied only to the hovered card */
 .value-card:hover {
-  position: absolute;
-  /* Take the card out of the normal flow */
-  left: 50%;
-  /* Move the card to the middle horizontally */
-  top: 50%;
-  /* Move the card to the middle vertically */
-  transform: translate(-50%, -50%) scale(1.5);
-  /* Center it perfectly and scale it */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  z-index: 10;
+  z-index: 5;
+  transform: scale(1.5, 1.5);
+  transform-origin: absolute;
   /* Bring the hovered card in front of others */
 }
 
@@ -70,6 +64,11 @@ export default {
   transform-style: preserve-3d;
   width: 100%;
   position: relative;
+  z-index: 1;
+  max-width: 80vw;
+  /* 80% of the viewport width */
+  max-height: 80vh;
+  /* 80% of the viewport height */
 }
 
 .card-content {
@@ -89,7 +88,7 @@ export default {
   opacity: 0;
   transition:
     opacity 0.3s ease,
-    transform 0.3s ease;
+    transform 2.3s ease-in-out;
   transform: translateY(-20px);
   /* Hidden above the view initially */
   position: relative;
@@ -109,7 +108,6 @@ export default {
   font-size: 22px;
   /* Slightly increased font size for better readability */
   color: black;
-  transition: margin-bottom 0.3s ease;
   margin-bottom: 0;
   /* Initially no margin */
 }
@@ -125,7 +123,7 @@ export default {
   opacity: 0;
   transition:
     opacity 0.3s ease,
-    transform 0.3s ease;
+    transform 1.3s ease;
   transform: translateY(20px);
   /* Hidden below the view initially */
   position: relative;
@@ -148,14 +146,6 @@ export default {
     /* Delay and smoothen the transition */
     opacity 0.3s ease 0.2s;
 }
-
-.value-card:not(:hover) {
-  transition:
-    transform 2s ease-out 0.4s,
-    /* Add delay before reverting the scale */
-    box-shadow 0.6s ease 0.2s;
-}
-
 
 /* Media Query for Small Screens */
 @media (max-width: 768px) {
