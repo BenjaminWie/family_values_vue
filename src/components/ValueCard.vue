@@ -36,9 +36,17 @@ export default {
 <style scoped>
 /* Hover effect applied only to the hovered card */
 .value-card:hover {
-  transform: scale(1.5);
-  z-index: 50;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+  position: absolute;
+  /* Take the card out of the normal flow */
+  left: 50%;
+  /* Move the card to the middle horizontally */
+  top: 50%;
+  /* Move the card to the middle vertically */
+  transform: translate(-50%, -50%) scale(1.5);
+  /* Center it perfectly and scale it */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  /* Bring the hovered card in front of others */
 }
 
 /* Focus-visible state for accessibility */
@@ -64,12 +72,6 @@ export default {
   position: relative;
 }
 
-.value-card:not(:hover) {
-  transition:
-    transform 2s ease-out 0.4s,
-    /* Add delay before reverting the scale */ box-shadow 0.6s ease 0.2s;
-}
-
 .card-content {
   position: relative;
   height: 100%;
@@ -88,7 +90,8 @@ export default {
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
-  transform: translateY(-20px); /* Hidden above the view initially */
+  transform: translateY(-20px);
+  /* Hidden above the view initially */
   position: relative;
   z-index: 2;
 }
@@ -97,19 +100,23 @@ export default {
   opacity: 1;
   color: black;
   z-index: 10;
-  transform: translateY(0); /* Slide down into view on hover */
+  transform: translateY(0);
+  /* Slide down into view on hover */
 }
 
 .card-content h2 {
   margin: 0;
-  font-size: 22px; /* Slightly increased font size for better readability */
+  font-size: 22px;
+  /* Slightly increased font size for better readability */
   color: black;
   transition: margin-bottom 0.3s ease;
-  margin-bottom: 0; /* Initially no margin */
+  margin-bottom: 0;
+  /* Initially no margin */
 }
 
 .value-card:hover .card-content h2 {
-  margin-bottom: 20px; /* Add margin to make space for the quote */
+  margin-bottom: 20px;
+  /* Add margin to make space for the quote */
 }
 
 .card-content p {
@@ -119,7 +126,8 @@ export default {
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
-  transform: translateY(20px); /* Hidden below the view initially */
+  transform: translateY(20px);
+  /* Hidden below the view initially */
   position: relative;
   z-index: 1;
 }
@@ -128,8 +136,26 @@ export default {
   opacity: 1;
   color: grey;
   z-index: 10;
-  transform: translateY(0); /* Slide up into view on hover */
+  transform: translateY(0);
+  /* Slide up into view on hover */
 }
+
+.value-card:hover~.value-card {
+  opacity: 0.8;
+  /* Slightly fade out non-hovered cards */
+  transition:
+    transform 0.6s ease-out 0.2s,
+    /* Delay and smoothen the transition */
+    opacity 0.3s ease 0.2s;
+}
+
+.value-card:not(:hover) {
+  transition:
+    transform 2s ease-out 0.4s,
+    /* Add delay before reverting the scale */
+    box-shadow 0.6s ease 0.2s;
+}
+
 
 /* Media Query for Small Screens */
 @media (max-width: 768px) {
@@ -138,8 +164,10 @@ export default {
     padding: 12px;
     max-width: 100%;
     height: auto;
-    transform: scale(1) !important; /* Prevent scaling on small screens */
-    flex: 1 1 100%; /* Ensure cards stack vertically */
+    transform: scale(1) !important;
+    /* Prevent scaling on small screens */
+    flex: 1 1 100%;
+    /* Ensure cards stack vertically */
     margin-bottom: 20px;
   }
 
@@ -153,7 +181,8 @@ export default {
   }
 
   .value-card:hover {
-    transform: scale(1.05); /* Minor scaling for small screens */
+    transform: scale(1.05);
+    /* Minor scaling for small screens */
   }
 }
 </style>

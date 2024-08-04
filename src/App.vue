@@ -6,19 +6,42 @@
       <button @click="setLanguage('de')" aria-label="Set language to German">DE</button>
     </div>
 
+    <!-- Welcome Screen -->
+    <section class="welcome-section">
+      <header>
+        <h1 class="main-header">Welcome to Our Vue Application</h1>
+        <p class="subtitle">This application showcases the power and flexibility of Vue.js.</p>
+      </header>
+    </section>
+
     <!-- Value Cards Container -->
-    <div class="values-container">
+    <section class="values-container">
       <ValueCard v-for="value in translatedValues" :key="value.id" :value="value" @mouseenter="setBackground(value)"
         @mouseleave="resetBackground" @open-modal="openModal(value)" tabindex="0" @keyup.enter="openModal(value)"
         aria-label="Open detailed view of {{ value.name }}"></ValueCard>
-    </div>
+    </section>
 
     <!-- Modal for Detailed View -->
     <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
 
-    <CustomAudioPlayer />
 
+    <!-- Audio Player -->
+    <section class="audio-section">
+      <CustomAudioPlayer />
+    </section>
 
+    <!-- Footer -->
+    <footer class="footer-section">
+      <div class="footer-left">
+        <p class="footer-header">Who:</p>
+        <p class="footer-text">Created by [Your Name]</p>
+        <p class="footer-header">Why:</p>
+        <p class="footer-text">To demonstrate a simple yet powerful Vue.js application.</p>
+      </div>
+      <div class="footer-right">
+        <p class="footer-legal">© 2024 [Your Name]. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
 </template>
 
