@@ -8,26 +8,17 @@
 
     <!-- Value Cards Container -->
     <div class="values-container">
-      <ValueCard
-        v-for="value in translatedValues"
-        :key="value.id"
-        :value="value"
-        @mouseenter="setBackground(value)"
-        @mouseleave="resetBackground"
-        @open-modal="openModal(value)"
-        tabindex="0"
-        @keyup.enter="openModal(value)"
-        aria-label="Open detailed view of {{ value.name }}"
-      ></ValueCard>
+      <ValueCard v-for="value in translatedValues" :key="value.id" :value="value" @mouseenter="setBackground(value)"
+        @mouseleave="resetBackground" @open-modal="openModal(value)" tabindex="0" @keyup.enter="openModal(value)"
+        aria-label="Open detailed view of {{ value.name }}"></ValueCard>
     </div>
 
     <!-- Modal for Detailed View -->
-    <Modal
-      v-if="showModal"
-      :show="showModal"
-      :selected-value="selectedValue"
-      @close-modal="closeModal"
-    ></Modal>
+    <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
+
+    <CustomAudioPlayer />
+
+
   </div>
 </template>
 
@@ -35,11 +26,13 @@
 import ValueCard from './components/ValueCard.vue'
 import Modal from './components/ModalComponent.vue'
 import { valuesContent } from './valuesContent.js'
+import CustomAudioPlayer from './components/CustomAudioPlayer.vue';
 
 export default {
   components: {
     ValueCard,
-    Modal
+    Modal,
+    CustomAudioPlayer
   },
   data() {
     return {
@@ -135,8 +128,10 @@ export default {
   display: flex;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-  justify-content: center; /* Center items in the container */
-  align-items: center; /* Vertically center items */
+  justify-content: center;
+  /* Center items in the container */
+  align-items: center;
+  /* Vertically center items */
   position: relative;
   width: 100%;
   max-width: 1200px;
