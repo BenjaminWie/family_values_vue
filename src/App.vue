@@ -143,7 +143,6 @@ export default {
   padding: 20px;
 }
 
-
 /* Modal Transitions */
 .modal-enter-active,
 .modal-leave-active {

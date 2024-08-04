@@ -55,7 +55,10 @@ export default {
   padding: 20px;
   margin: 20px;
   cursor: pointer;
-  transition: transform 1.6s ease-in-out, box-shadow 1.3s ease-in-out, opacity 0.3s ease;
+  transition:
+    transform 1.6s ease-in-out,
+    box-shadow 1.3s ease-in-out,
+    opacity 0.3s ease;
   transform-style: preserve-3d;
   width: 100%;
   position: relative;
@@ -63,8 +66,8 @@ export default {
 
 .value-card:not(:hover) {
   transition:
-    transform 2s ease-out 0.4s, /* Add delay before reverting the scale */
-    box-shadow 0.6s ease 0.2s;
+    transform 2s ease-out 0.4s,
+    /* Add delay before reverting the scale */ box-shadow 0.6s ease 0.2s;
 }
 
 .card-content {
@@ -82,7 +85,9 @@ export default {
   border-radius: 20%;
   margin-bottom: 20px;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   transform: translateY(-20px); /* Hidden above the view initially */
   position: relative;
   z-index: 2;
@@ -90,7 +95,7 @@ export default {
 
 .value-card:hover .profile-image {
   opacity: 1;
-  color: black; 
+  color: black;
   z-index: 10;
   transform: translateY(0); /* Slide down into view on hover */
 }
@@ -111,7 +116,9 @@ export default {
   font-style: italic;
   color: grey;
   opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   transform: translateY(20px); /* Hidden below the view initially */
   position: relative;
   z-index: 1;
@@ -119,7 +126,7 @@ export default {
 
 .value-card:hover .card-content p {
   opacity: 1;
-  color: grey; 
+  color: grey;
   z-index: 10;
   transform: translateY(0); /* Slide up into view on hover */
 }
@@ -149,5 +156,4 @@ export default {
     transform: scale(1.05); /* Minor scaling for small screens */
   }
 }
-
 </style>
