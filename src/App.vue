@@ -12,11 +12,21 @@
       <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
     </header>
   </section>
-  <!-- Value Cards Container -->
+  <!-- Value Cards Container>
   <section class="values-container">
     <ValueCard :style="dynamicStyle" v-for="value in translatedValues" :key="value.id" :value="value"
       @mouseenter="setBackground(value)" @mouseleave="resetBackground" @open-modal="openModal(value)" tabindex="0"
       @keyup.enter="openModal(value)" aria-label="Open detailed view of {{ value.name }}"></ValueCard>
+  </section-->
+
+  <section v-for="value in translatedValues" :key="value.id" class="value-section">
+    <div class="value-content">
+      <img :src="value.image" alt="Value Image" class="value-image" />
+      <div class="value-card">
+        <h2>{{ value.name }}</h2>
+        <p>"{{ value.quote }}" - {{ value.author }}</p>
+      </div>
+    </div>
   </section>
 
   <!-- Modal for Detailed View -->
@@ -68,6 +78,7 @@ export default {
       return {
         background: this.dynamicBackground || 'linear-gradient(45deg, #8B0000, #FF6347)',
         height: 'fit-content',
+        marginBotton: '50px',
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -162,18 +173,86 @@ export default {
   outline: 2px solid #2575fc;
 }
 
+/* Base Styling */
+.value-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.value-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Image Styling */
+.value-image {
+  width: 40%;
+  max-width: 400px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Styling */
+.value-card {
+  background: linear-gradient(45deg, #8B0000, #FF6347);
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  max-width: 500px;
+  text-align: center;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Alternating Section Layouts */
+.value-section:nth-child(odd) .value-content {
+  flex-direction: row;
+}
+
+.value-section:nth-child(even) .value-content {
+  flex-direction: row-reverse;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .value-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .value-image,
+  .value-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .value-card {
+    margin-top: 20px;
+  }
+}
+
+/*
 .values-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   justify-content: center;
-  /* Center items in the container */
   align-items: center;
-  /* Vertically center items */
   position: relative;
   width: 100%;
   padding: 20px;
 }
+*/
 
 /* Modal Transitions */
 .modal-enter-active,
