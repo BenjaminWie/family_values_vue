@@ -12,13 +12,8 @@
       <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
     </header>
   </section>
-  <!-- Value Cards Container>
-  <section class="values-container">
-    <ValueCard :style="dynamicStyle" v-for="value in translatedValues" :key="value.id" :value="value"
-      @mouseenter="setBackground(value)" @mouseleave="resetBackground" @open-modal="openModal(value)" tabindex="0"
-      @keyup.enter="openModal(value)" aria-label="Open detailed view of {{ value.name }}"></ValueCard>
-  </section-->
 
+  <!-- Value Sections -->
   <section v-for="value in translatedValues" :key="value.id" class="value-section">
     <div class="value-content">
       <img :src="value.image" alt="Value Image" class="value-image" />
@@ -32,7 +27,8 @@
   <!-- Modal for Detailed View -->
   <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
 
-  <!--CustomAudioPlayer /-->
+  <!-- Audio Player -->
+  <SimpleAudioPlayer />
 
   <!-- Footer -->
   <footer class="footer-section">
@@ -53,14 +49,14 @@
 <script>
 import ValueCard from './components/ValueCard.vue'
 import Modal from './components/ModalComponent.vue'
+import SimpleAudioPlayer from './components/SimpleAudioPlayer.vue'
 import { valuesContent } from './valuesContent.js'
-import CustomAudioPlayer from './components/CustomAudioPlayer.vue'
 
 export default {
   components: {
     ValueCard,
     Modal,
-    CustomAudioPlayer
+    SimpleAudioPlayer
   },
   data() {
     return {
@@ -73,28 +69,9 @@ export default {
   computed: {
     translatedValues() {
       return valuesContent[this.language]
-    },
-    dynamicStyle() {
-      return {
-        background: this.dynamicBackground || 'linear-gradient(45deg, #8B0000, #FF6347)',
-        height: 'fit-content',
-        marginBotton: '50px',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        transition: 'background 2.5s ease-in-out'
-      }
     }
   },
   methods: {
-    setBackground(value) {
-      this.dynamicBackground = value.gradient || 'linear-gradient(45deg, #8B0000, #FF6347)'
-    },
-    resetBackground() {
-      this.dynamicBackground = 'linear-gradient(45deg, #8B0000, #FF6347)'
-    },
     setLanguage(lang) {
       this.language = lang
       localStorage.setItem('selectedLanguage', lang) // Persist language choice
@@ -102,18 +79,9 @@ export default {
     openModal(value) {
       this.showModal = true
       this.selectedValue = value
-      this.$nextTick(() => {
-        const modalElement = this.$refs.modal
-        if (modalElement) {
-          modalElement.focus() // Set focus to modal for accessibility
-        }
-      })
     },
     closeModal() {
       this.showModal = false
-      this.$nextTick(() => {
-        document.activeElement.blur() // Return focus to trigger element
-      })
     }
   },
   created() {
@@ -124,6 +92,7 @@ export default {
   }
 }
 </script>
+
 
 <style scoped>
 #welcome-section {
