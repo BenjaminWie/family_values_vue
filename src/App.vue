@@ -33,7 +33,7 @@
       <p class="footer-text">To keep in mind the values we gave our self and why we have choosen them.</p>
     </div>
     <div class="footer-right">
-      <p class="footer-legal">© 2024 Wiedenbrueg.
+      <p class="footer-legal">© 2024 Wiedenbrueg
         <br> All rights reserved.
       </p>
     </div>
@@ -57,7 +57,7 @@ export default {
       language: 'de',
       showModal: false,
       selectedValue: null,
-      dynamicBackground: 'linear-gradient(45deg, #e9c10e, #fc9904ab)' // Default background gradient
+      dynamicBackground: 'linear-gradient(45deg, #8B0000, #FF6347)' // Default background gradient
     }
   },
   computed: {
@@ -66,7 +66,7 @@ export default {
     },
     dynamicStyle() {
       return {
-        background: this.dynamicBackground || 'linear-gradient(45deg, #e9c10e, #fc9904ab)',
+        background: this.dynamicBackground || 'linear-gradient(45deg, #8B0000, #FF6347)',
         height: 'fit-content',
         width: '100%',
         display: 'flex',
@@ -79,10 +79,10 @@ export default {
   },
   methods: {
     setBackground(value) {
-      this.dynamicBackground = value.gradient || 'linear-gradient(45deg, #e9c10e, #fc9904ab)'
+      this.dynamicBackground = value.gradient || 'linear-gradient(45deg, #8B0000, #FF6347)'
     },
     resetBackground() {
-      this.dynamicBackground = 'linear-gradient(45deg, #e9c10e, #fc9904ab)'
+      this.dynamicBackground = 'linear-gradient(45deg, #8B0000, #FF6347)'
     },
     setLanguage(lang) {
       this.language = lang
@@ -124,13 +124,13 @@ export default {
 }
 
 .main-header {
-  font-size: 3em;
+  font-size: 7em;
   margin-bottom: 10px;
   margin-top: 40px;
 }
 
 .subtitle {
-  font-size: 1.5em;
+  font-size: 2em;
   color: #555;
   margin-bottom: 0px;
 }

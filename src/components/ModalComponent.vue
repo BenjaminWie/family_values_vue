@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" class="modal-backdrop" @click.self="close">
     <div class="modal-content">
-      <button class="close-button" @click="close" aria-label="Close modal">✕</button>
+      <button class="close-button" @click="close" aria-label="closeModal">✕</button>
 
       <!-- Value Header with Background Gradient and Image -->
       <div class="value-header" :style="{ background: selectedValue.gradient }">
