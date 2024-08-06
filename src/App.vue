@@ -12,6 +12,17 @@
       <!-- Welcome Screen -->
       <section class="welcome-section">
         <header>
+          <div class="logo-container">
+            <!-- SVG Logo -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#FF4500" stroke-width="4">
+              <!-- House Outline -->
+              <path d="M10 50 L50 10 L90 50 L90 90 L10 90 Z" fill="none" />
+              <!-- Heart inside the house -->
+              <path d="M50 55 C40 45, 30 55, 50 75 C70 55, 60 45, 50 55 Z" fill="#FF4500" />
+            </svg>
+
+
+          </div>
           <h1 class="main-header">Familienwerte</h1>
           <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
         </header>
@@ -126,6 +137,10 @@ body {
   text-align: center;
   padding: 50px 20px;
   margin-bottom: 30px;
+}
+
+.logo-container {
+  margin-bottom: 20px;
 }
 
 .main-header {
