@@ -1,50 +1,42 @@
 <template>
-  <!-- Language Switcher in Top Right -->
+  <!-- Language Switcher in Top Right>
   <div class="language-switcher">
     <button @click="setLanguage('en')" aria-label="Set language to English">EN</button>
     <button @click="setLanguage('de')" aria-label="Set language to German">DE</button>
-  </div>
+  </div-->
 
-  <!-- Main Content Wrapper to Enable Scrolling -->
   <div class="main-content">
-    <!-- Welcome Screen -->
-    <section class="welcome-section">
-      <header>
-        <h1 class="main-header">Familienwerte</h1>
-        <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
-      </header>
-    </section>
 
-    <!-- Audio Player Section -->
-    <section class="audio-section">
-      <SimpleAudioPlayer />
-    </section>
+    <!-- Main Content Wrapper to Enable Scrolling -->
+    <div class="main-content">
+      <!-- Welcome Screen -->
+      <section class="welcome-section">
+        <header>
+          <h1 class="main-header">Familienwerte</h1>
+          <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
+        </header>
+      </section>
 
-    <!-- Value Sections -->
-    <section
-      v-for="value in translatedValues"
-      :key="value.id"
-      class="value-section"
-      @click="openModal(value)"
-    >
-      <div class="value-content">
-        <img :src="value.image" alt="Value Image" class="value-image" />
-        <div class="value-card">
-          <h2>{{ value.name }}</h2>
-          <p>"{{ value.quote }}" - {{ value.author }}</p>
+      <!-- Audio Player Section -->
+      <section class="audio-section">
+        <SimpleAudioPlayer />
+      </section>
+
+      <!-- Value Sections -->
+      <section v-for="value in translatedValues" :key="value.id" class="value-section" @click="openModal(value)">
+        <div class="value-content">
+          <img :src="value.image" alt="Value Image" class="value-image" />
+          <div class="value-card">
+            <h1>{{ value.name }}</h1>
+            <p>"{{ value.quote }}" - {{ value.author }}</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Modal for Detailed View -->
-    <Modal
-      v-if="showModal"
-      :show="showModal"
-      :selected-value="selectedValue"
-      @close-modal="closeModal"
-    ></Modal>
+      <!-- Modal for Detailed View -->
+      <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
+    </div>
   </div>
-
   <!-- Footer -->
   <footer class="footer-section">
     <div class="footer-left">
@@ -116,14 +108,17 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .main-content {
-  min-height: 100vh;
-  overflow-y: auto;
-  padding-bottom: 60px;
-  /* Space for sticky footer */
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-bottom: 20px;
 }
 
 .welcome-section {
@@ -220,9 +215,7 @@ body {
   text-align: center;
   margin: 20px;
   overflow: hidden;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .value-section:nth-child(even) .value-content {
@@ -250,21 +243,29 @@ body {
   .value-card {
     margin-top: 20px;
   }
+
+  footer.footer-section {
+    position: static;
+    padding: 10px;
+  }
 }
 
-/* Sticky Footer Styling */
-.footer-section {
+/* Footer styling */
+footer.footer-section {
+  position: sticky;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
   padding: 20px;
   background-color: #1a1a1a;
   color: #fff;
   align-items: center;
-  position: sticky;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+  width: 100% I;
+  box-sizing: border-box;
+  z-index: 10;
+  margin-top: auto;
+  clear: both;
+  flex: 2;
 }
 
 .footer-left {
