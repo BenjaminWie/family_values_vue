@@ -17,7 +17,6 @@
       <div class="story-section">
         <h3 class="section-title">Stories</h3>
         <div v-for="(story, index) in selectedValue.stories" :key="index" class="story-card">
-          <!-- <img v-if="story.image" :src="story.image" alt="Story Image" class="story-image" /> -->
           <div class="story-content">
             <h4>{{ story.title }}</h4>
             <p>{{ story.content }}</p>
@@ -29,8 +28,8 @@
       <div class="narrative-section">
         <h3 class="section-title">Narratives</h3>
         <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="narrative-card">
-          <!-- <img v-if="narrative.image" :src="narrative.image" alt="Narrative Image" class="narrative-image" /> -->
           <div class="narrative-content">
+            <img v-if="narrative.image" :src="narrative.image" alt="Narrative Graph" class="graph-image" />
             <h4>{{ narrative.title }}</h4>
             <p>{{ narrative.content }}</p>
           </div>
@@ -48,7 +47,7 @@ export default {
   },
   methods: {
     close() {
-      this.$emit('close-modal')
+      this.$emit('close-modal');
     }
   }
 }
@@ -162,21 +161,17 @@ export default {
   flex-direction: row;
 }
 
+.graph-image {
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .story-card {
   flex-direction: row;
 }
-
-/* Commented out Narrative and Story Images */
-/*
-.narrative-image, 
-.story-image {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 20px;
-}
-*/
 
 .narrative-content,
 .story-content {

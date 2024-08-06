@@ -3,34 +3,50 @@ import gemeinsamImage from '@/assets/cardValues/gemeinsam.webp'
 import verantwortlichImage from '@/assets/cardValues/verantwortlich.webp'
 import dankbarImage from '@/assets/cardValues/dankbar.webp'
 
+// Graph images
+import jobsGraph from '@/assets/graphs/selbstwirksam/jobs.png'
+import depressionGraph from '@/assets/graphs/selbstwirksam/depression.png'
+import successGraph from '@/assets/graphs/selbstwirksam/success.png'
+import engagementGraph from '@/assets/graphs/selbstwirksam/engagement.png'
+
+// Graph images for "Gemeinsam"
+import familienBondsGraph from '@/assets/graphs/gemeinsam/familien_bonds.png'
+import wealthDistributionGraph from '@/assets/graphs/gemeinsam/wealth_distribution.png'
+import teamworkInnovationGraph from '@/assets/graphs/gemeinsam/teamwork_innovation.png'
+import diversityPerformanceGraph from '@/assets/graphs/gemeinsam/diversity_performance.png'
+
 export const valuesContent = {
   de: [
     {
       id: 1,
       name: 'Selbstwirksam',
       quote:
-        '„Jeder Mensch ist der Architekt seiner eigenen Zukunft. Nur wer an sich glaubt, kann Berge versetzen.“',
+        'Jeder Mensch ist der Architekt seiner eigenen Zukunft. Nur wer an sich glaubt, kann Berge versetzen.',
       author: 'Viktor Frankl',
       gradient: 'linear-gradient(45deg, #34eb83, #349ceb)',
-      image: 'selbstwirksamImage',
+      image: selbstwirksamImage,
       narratives: [
         {
           title: 'Technologie und Zukunftskompetenzen',
+          image: jobsGraph,
           content:
             'Bis 2030 werden 85% der Jobs, die die Generation Z ausführen wird, noch nicht existieren (Dell Technologies). Diese Zukunft erfordert von jedem Einzelnen die Fähigkeit, sich kontinuierlich anzupassen und neue Fähigkeiten zu entwickeln. Nur wer an seine Selbstwirksamkeit glaubt, wird in der Lage sein, die notwendigen Technologien zu meistern und in einer sich ständig wandelnden Arbeitswelt erfolgreich zu sein.'
         },
         {
           title: 'Mentale Gesundheit und Resilienz',
+          image: depressionGraph,
           content:
             'Laut der WHO wird bis 2030 die häufigste Ursache für Krankheit weltweit Depression sein. Selbstwirksamkeit ist ein Schlüssel zur Prävention und Bewältigung mentaler Herausforderungen. Studien zeigen, dass Menschen mit hoher Selbstwirksamkeit weniger anfällig für Stress und Burnout sind (Bandura, 2022).'
         },
         {
           title: 'Bildung und lebenslanges Lernen',
+          image: successGraph,
           content:
             'Lebenslanges Lernen wird in der Wissensgesellschaft immer wichtiger. Eine Studie der OECD zeigt, dass Personen, die ihre eigene Lernfähigkeit positiv einschätzen, erfolgreicher in ihrem Beruf sind. Selbstwirksamkeit ermöglicht es, kontinuierlich neues Wissen zu erwerben und damit den eigenen Wert auf dem Arbeitsmarkt zu sichern.'
         },
         {
           title: 'Klimawandel und Nachhaltigkeit',
+          image: engagementGraph,
           content:
             'Laut einer WWF-Studie fühlen sich 70% der jungen Menschen in Europa von der Klimakrise überfordert. Doch jene, die ihre Selbstwirksamkeit stark ausgeprägt sehen, engagieren sich doppelt so häufig aktiv für den Klimaschutz. Diese Menschen wissen, dass sie durch ihr Handeln einen Unterschied machen können.'
         }
@@ -62,28 +78,32 @@ export const valuesContent = {
       id: 2,
       name: 'Gemeinsam',
       quote:
-        '„Einheit ist Stärke… wenn es Teamwork und Zusammenarbeit gibt, können wunderbare Dinge erreicht werden.“',
+        'Einheit ist Stärke… wenn es Teamwork und Zusammenarbeit gibt, können wunderbare Dinge erreicht werden.',
       author: 'Mattie Stepanek',
       gradient: 'linear-gradient(45deg, #ff9a8b, #ffc3a0)',
-      image: 'gemeinsamImage',
+      image: gemeinsamImage,
       narratives: [
         {
           title: 'Familienzusammenhalt und Krisenbewältigung',
+          image: familienBondsGraph,
           content:
             'In Zeiten globaler Unsicherheit wie der COVID-19-Pandemie hat sich gezeigt, dass Familien, die zusammenhalten, besser mit Krisen umgehen können. Eine Studie der Harvard University zeigt, dass 60% der Menschen, die starke familiäre Bindungen haben, sich emotional stabiler und weniger gestresst fühlen.'
         },
         {
           title: 'Gemeinschaft und soziale Gerechtigkeit',
+          image: wealthDistributionGraph,
           content:
             'Die Schere zwischen Arm und Reich wird immer größer. Oxfam berichtet, dass die reichsten 1% der Weltbevölkerung doppelt so viel Vermögen besitzen wie der Rest der Menschheit zusammen. Gemeinschaften, die sich für soziale Gerechtigkeit einsetzen, spielen eine Schlüsselrolle bei der Bekämpfung dieser Ungleichheit.'
         },
         {
           title: 'Teamarbeit und Innovationskraft',
+          image: teamworkInnovationGraph,
           content:
             'Studien zeigen, dass Teams, die effektiv zusammenarbeiten, 2,3-mal mehr Innovationen hervorbringen als Einzelpersonen. In einer immer komplexer werdenden Welt ist Zusammenarbeit der Schlüssel, um innovative Lösungen für die Herausforderungen der Zukunft zu entwickeln.'
         },
         {
           title: 'Diversität als Stärke in der Gemeinschaft',
+          image: diversityPerformanceGraph,
           content:
             'McKinsey-Studien belegen, dass divers aufgestellte Teams eine um 35% höhere Wahrscheinlichkeit haben, überdurchschnittliche finanzielle Renditen zu erzielen. Diversität und Inklusion in Gemeinschaften stärken nicht nur die Wirtschaft, sondern fördern auch ein harmonisches Zusammenleben.'
         }
@@ -115,10 +135,10 @@ export const valuesContent = {
       id: 3,
       name: 'Verantwortlich',
       quote:
-        '„Unser Ziel muss es sein, das Leben auf dieser Erde zu bewahren und zu verbessern, und das erfordert eine Verantwortung von jedem von uns.“',
+        'Unser Ziel muss es sein, das Leben auf dieser Erde zu bewahren und zu verbessern, und das erfordert eine Verantwortung von jedem von uns.',
       author: 'Jane Goodall',
       gradient: 'linear-gradient(45deg, #4b5320, #8b4513)',
-      image: 'verantwortlichImage',
+      image: verantwortlichImage,
       narratives: [
         {
           title: 'Verantwortung im Klimaschutz',
@@ -168,10 +188,10 @@ export const valuesContent = {
       id: 4,
       name: 'Dankbar',
       quote:
-        '„Dankbarkeit ist nicht nur die größte aller Tugenden, sondern auch die Mutter aller anderen.“',
+        'Dankbarkeit ist nicht nur die größte aller Tugenden, sondern auch die Mutter aller anderen.',
       author: 'Cicero',
       gradient: 'linear-gradient(45deg, #d3a4ff, #ffd1dc)',
-      image: 'dankbarImage',
+      image: dankbarImage,
       narratives: [
         {
           title: 'Dankbarkeit und mentale Gesundheit',
