@@ -1,20 +1,26 @@
 <template>
-  <div>
-    <audio ref="audioPlayer" src="/family.mp3" autoplay controls></audio>
-  </div>
+    <div>
+        <audio ref="audioPlayer" :src="audioSrc" autoplay controls></audio>
+    </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
+const familyAudio = new URL('@/assets/Family.mp3', import.meta.url).href;
 
 export default defineComponent({
-  mounted() {
-    const audioElement = this.$refs.audioPlayer as HTMLAudioElement
-    audioElement.play().catch((error) => {
-      console.log('User interaction required to play audio.', error)
-    })
-  }
-})
+    data() {
+        return {
+            audioSrc: familyAudio,
+        };
+    },
+    mounted() {
+        const audioElement = this.$refs.audioPlayer as HTMLAudioElement;
+        audioElement.play().catch(error => {
+            console.log("User interaction required to play audio.", error);
+        });
+    }
+});
 </script>
 
 <style scoped>
