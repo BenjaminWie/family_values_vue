@@ -15,6 +15,12 @@ import wealthDistributionGraph from '@/assets/graphs/gemeinsam/wealth_distributi
 import teamworkInnovationGraph from '@/assets/graphs/gemeinsam/teamwork_innovation.png'
 import diversityPerformanceGraph from '@/assets/graphs/gemeinsam/diversity_performance.png'
 
+// Graph images for "Verantwortlich"
+import ghgReductionGraph from '@/assets/graphs/verantwortlich/ghg_reduction.png'
+import sustainableRoiGraph from '@/assets/graphs/verantwortlich/sustainable_roi.png'
+import wealthDisparityGraph from '@/assets/graphs/verantwortlich/wealth_disparity.png'
+import ethicalTechGraph from '@/assets/graphs/verantwortlich/ethical_tech.png'
+
 export const valuesContent = {
   de: [
     {
@@ -142,21 +148,25 @@ export const valuesContent = {
       narratives: [
         {
           title: 'Verantwortung im Klimaschutz',
+          image: ghgReductionGraph,
           content:
             'Der Klimawandel ist die größte Herausforderung unserer Zeit. Die Treibhausgasemissionen müssen bis 2030 um 45% reduziert werden, um das 1,5-Grad-Ziel zu erreichen (UNFCCC). Jede Entscheidung, die wir treffen, von der Wahl des Verkehrsmittels bis zum Konsumverhalten, trägt zur globalen Erwärmung bei. Verantwortung zu übernehmen bedeutet, bewusste Entscheidungen zu treffen, um unseren ökologischen Fußabdruck zu minimieren.'
         },
         {
           title: 'Wirtschaftliche Verantwortung und Nachhaltigkeit',
+          image: sustainableRoiGraph,
           content:
             'Immer mehr Unternehmen erkennen, dass nachhaltiges Wirtschaften nicht nur ethisch, sondern auch wirtschaftlich sinnvoll ist. Laut einer Studie von BCG erzielen Unternehmen, die sich auf Nachhaltigkeit konzentrieren, eine um 20% höhere Kapitalrendite. Verantwortung bedeutet, Geschäftsmodelle zu entwickeln, die langfristig ökologisch und sozial verträglich sind.'
         },
         {
           title: 'Globale Gerechtigkeit und soziale Verantwortung',
+          image: wealthDisparityGraph,
           content:
             'Die globale Ungleichheit hat dramatische Ausmaße erreicht. Oxfam berichtet, dass die 22 reichsten Männer der Welt mehr Vermögen besitzen als alle Frauen in Afrika zusammen. Verantwortung übernehmen bedeutet, sich aktiv für eine gerechtere Welt einzusetzen, sei es durch Spenden, ehrenamtliche Arbeit oder politische Teilhabe.'
         },
         {
           title: 'Technologie und ethische Verantwortung',
+          image: ethicalTechGraph,
           content:
             'Mit der zunehmenden Verbreitung von Künstlicher Intelligenz (KI) und Überwachungstechnologien müssen wir uns der ethischen Verantwortung bewusst sein, die mit ihrer Nutzung einhergeht. Ein verantwortungsvoller Umgang mit Technologie kann verhindern, dass sie zur Unterdrückung oder Überwachung missbraucht wird, und stattdessen zu einem Werkzeug für positive Veränderungen werden.'
         }
