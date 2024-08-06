@@ -217,7 +217,8 @@ export const valuesContent = {
         }
       ]
     }
-  ],
+  ]
+  /*
   en: [
     {
       id: 1,
@@ -431,4 +432,5 @@ export const valuesContent = {
       ]
     }
   ]
+    */
 }

@@ -113,7 +113,8 @@ body {
 }
 
 .main-content {
-  flex: 1;
+  grid-row: 1;
+  grid-column: 1 / -1;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -252,6 +253,8 @@ body {
 
 /* Footer styling */
 footer.footer-section {
+  grid-row: 2;
+  grid-column: 1 / -1;
   position: sticky;
   bottom: 0;
   display: flex;
@@ -265,7 +268,6 @@ footer.footer-section {
   z-index: 10;
   margin-top: auto;
   clear: both;
-  flex: 2;
 }
 
 .footer-left {

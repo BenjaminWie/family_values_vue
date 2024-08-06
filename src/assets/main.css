@@ -1,9 +1,11 @@
 @import './base.css';
 
 #app {
-  max-width: 1280px;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column layout */
+  grid-template-rows: auto 1fr auto; /* Three rows: header, content, footer */
+  height: 100vh;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
 }
 
