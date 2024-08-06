@@ -18,8 +18,11 @@
         <h3 class="section-title">Stories</h3>
         <div v-for="(story, index) in selectedValue.stories" :key="index" class="story-card">
           <div class="story-content">
+            <img v-if="story.image" :src="story.image" alt="Story Image" class="graph-image" />
             <h4>{{ story.title }}</h4>
             <p>{{ story.content }}</p>
+            <a v-if="story.dataLink" :href="story.dataLink" target="_blank" class="data-link">Klingt spannend - erzähl
+              mir mehr!</a>
           </div>
         </div>
       </div>
