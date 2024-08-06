@@ -44,25 +44,29 @@ function __VLS_template() {
     __VLS_intrinsicElements.div,
     __VLS_intrinsicElements.div
   )({ ...{ class: 'card-content' } })
+  if (__VLS_ctx.isHovered) {
+    __VLS_elementAsFunction(__VLS_intrinsicElements.img)({
+      src: __VLS_ctx.value.image,
+      alt: 'Profile Image',
+      ...{ class: 'profile-image' }
+    })
+    // @ts-ignore
+    ;[onHover, onLeave, openModal, isHovered, value]
+  }
   __VLS_elementAsFunction(__VLS_intrinsicElements.h2, __VLS_intrinsicElements.h2)({})
   __VLS_ctx.value.name
   // @ts-ignore
-  ;[onHover, onLeave, openModal, value]
-  __VLS_elementAsFunction(__VLS_intrinsicElements.img)({
-    src: __VLS_ctx.value.image,
-    alt: 'Profile Image',
-    ...{ class: 'profile-image' }
-  })
-  // @ts-ignore
   ;[value]
-  __VLS_elementAsFunction(
-    __VLS_intrinsicElements.p,
-    __VLS_intrinsicElements.p
-  )({ ...{ class: 'quote' } })
-  __VLS_ctx.value.quote
-  __VLS_ctx.value.author
-  // @ts-ignore
-  ;[value, value]
+  if (__VLS_ctx.isHovered) {
+    __VLS_elementAsFunction(
+      __VLS_intrinsicElements.p,
+      __VLS_intrinsicElements.p
+    )({ ...{ class: 'quote' } })
+    __VLS_ctx.value.quote
+    __VLS_ctx.value.author
+    // @ts-ignore
+    ;[isHovered, value, value]
+  }
   if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
     __VLS_styleScopedClasses['value-card']
     __VLS_styleScopedClasses['card-content']

@@ -1,22 +1,20 @@
 <template>
-    <audio ref="audioPlayer" :src="audioSrc" autoplay></audio>
+  <div>
+    <audio ref="audioPlayer" src="/family.mp3" autoplay controls></audio>
+  </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            audioSrc: require('@/assets/family.mp3'), // Ensure the correct path to your audio file
-        };
-    },
-    mounted() {
-        this.$refs.audioPlayer.play().catch(error => {
-            console.log("Autoplay prevented. Audio is muted to allow autoplay.", error);
-            this.$refs.audioPlayer.muted = true;
-            this.$refs.audioPlayer.play();
-        });
-    },
-};
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  mounted() {
+    const audioElement = this.$refs.audioPlayer as HTMLAudioElement
+    audioElement.play().catch((error) => {
+      console.log('User interaction required to play audio.', error)
+    })
+  }
+})
 </script>
 
 <style scoped>

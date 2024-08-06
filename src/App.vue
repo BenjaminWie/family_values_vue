@@ -5,30 +5,45 @@
     <button @click="setLanguage('de')" aria-label="Set language to German">DE</button>
   </div>
 
-  <!-- Welcome Screen -->
-  <section class="welcome-section">
-    <header>
-      <h1 class="main-header">Familienwerte</h1>
-      <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
-    </header>
-  </section>
+  <!-- Main Content Wrapper to Enable Scrolling -->
+  <div class="main-content">
+    <!-- Welcome Screen -->
+    <section class="welcome-section">
+      <header>
+        <h1 class="main-header">Familienwerte</h1>
+        <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
+      </header>
+    </section>
 
-  <!-- Value Sections -->
-  <section v-for="value in translatedValues" :key="value.id" class="value-section">
-    <div class="value-content">
-      <img :src="value.image" alt="Value Image" class="value-image" />
-      <div class="value-card">
-        <h2>{{ value.name }}</h2>
-        <p>"{{ value.quote }}" - {{ value.author }}</p>
+    <!-- Audio Player Section -->
+    <section class="audio-section">
+      <SimpleAudioPlayer />
+    </section>
+
+    <!-- Value Sections -->
+    <section
+      v-for="value in translatedValues"
+      :key="value.id"
+      class="value-section"
+      @click="openModal(value)"
+    >
+      <div class="value-content">
+        <img :src="value.image" alt="Value Image" class="value-image" />
+        <div class="value-card">
+          <h2>{{ value.name }}</h2>
+          <p>"{{ value.quote }}" - {{ value.author }}</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Modal for Detailed View -->
-  <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
-
-  <!-- Audio Player -->
-  <SimpleAudioPlayer />
+    <!-- Modal for Detailed View -->
+    <Modal
+      v-if="showModal"
+      :show="showModal"
+      :selected-value="selectedValue"
+      @close-modal="closeModal"
+    ></Modal>
+  </div>
 
   <!-- Footer -->
   <footer class="footer-section">
@@ -36,25 +51,26 @@
       <p class="footer-header">Who</p>
       <p class="footer-text">Familie Wiedenbrueg</p>
       <p class="footer-header">Why</p>
-      <p class="footer-text">To keep in mind the values we gave our self and why we have choosen them.</p>
+      <p class="footer-text">
+        To keep in mind the values we gave our self and why we have chosen them.
+      </p>
     </div>
     <div class="footer-right">
-      <p class="footer-legal">© 2024 Wiedenbrueg
-        <br> All rights reserved.
+      <p class="footer-legal">
+        © 2024 Wiedenbrueg <br />
+        All rights reserved.
       </p>
     </div>
   </footer>
 </template>
 
 <script>
-import ValueCard from './components/ValueCard.vue'
 import Modal from './components/ModalComponent.vue'
 import SimpleAudioPlayer from './components/SimpleAudioPlayer.vue'
 import { valuesContent } from './valuesContent.js'
 
 export default {
   components: {
-    ValueCard,
     Modal,
     SimpleAudioPlayer
   },
@@ -62,8 +78,7 @@ export default {
     return {
       language: 'de',
       showModal: false,
-      selectedValue: null,
-      dynamicBackground: 'linear-gradient(45deg, #8B0000, #FF6347)' // Default background gradient
+      selectedValue: null
     }
   },
   computed: {
@@ -82,6 +97,7 @@ export default {
     },
     closeModal() {
       this.showModal = false
+      this.selectedValue = null
     }
   },
   created() {
@@ -93,14 +109,27 @@ export default {
 }
 </script>
 
-
 <style scoped>
-#welcome-section {
+/* General Styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.main-content {
+  min-height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 60px;
+  /* Space for sticky footer */
+}
+
+.welcome-section {
   text-align: center;
   padding: 50px 20px;
-  position: fixed;
-  width: 100%;
-  top: 30;
+  margin-bottom: 30px;
 }
 
 .main-header {
@@ -112,7 +141,14 @@ export default {
 .subtitle {
   font-size: 2em;
   color: #555;
-  margin-bottom: 0px;
+  margin-bottom: 0;
+}
+
+/* Audio Section */
+.audio-section {
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px 0;
 }
 
 /* Language Switcher in Top Right */
@@ -142,27 +178,26 @@ export default {
   outline: 2px solid #2575fc;
 }
 
-/* Base Styling */
+/* Value Section Styling */
 .value-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 50px 20px;
+  padding: 20px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto;
   flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .value-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
-/* Image Styling */
 .value-image {
   width: 40%;
   max-width: 400px;
@@ -170,26 +205,33 @@ export default {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Card Styling */
 .value-card {
-  background: linear-gradient(45deg, #8B0000, #FF6347);
-  padding: 20px 30px;
+  background: linear-gradient(45deg, #8b0000, #ff6347);
+  padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   width: 50%;
   max-width: 500px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   margin: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Alternating Section Layouts */
-.value-section:nth-child(odd) .value-content {
-  flex-direction: row;
+  overflow: hidden;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .value-section:nth-child(even) .value-content {
   flex-direction: row-reverse;
+}
+
+.value-section:hover .value-card {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive Styling */
@@ -210,110 +252,45 @@ export default {
   }
 }
 
-/*
-.values-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  padding: 20px;
-}
-*/
-
-/* Modal Transitions */
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.modal-enter,
-.modal-leave-to {
-  opacity: 0;
-}
-
-/* Modal Styling */
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(5px);
-}
-
-.modal-content {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 500px;
-  width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-}
-
-.modal-content button.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-footer.footer-section {
+/* Sticky Footer Styling */
+.footer-section {
   display: flex;
   justify-content: space-between;
   padding: 20px;
   background-color: #1a1a1a;
   color: #fff;
   align-items: center;
+  position: sticky;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: fit-content;
-  position: fixed;
+  z-index: 1000;
 }
 
 .footer-left {
-  text-align: left end;
+  text-align: left;
 }
 
 .footer-right {
-  text-align: end;
+  text-align: right;
   color: #ccc;
 }
 
 .footer-header {
   font-size: 1em;
   color: #f8f5f5;
-  font-style: bold;
+  font-weight: bold;
   margin-bottom: 5px;
 }
 
 .footer-text {
   font-size: 1.2em;
   color: #c0b09c;
-  /* Custom text color for the "Who" and "Why" section */
   margin-bottom: 5px;
 }
 
 .footer-legal {
   font-size: 1em;
   color: #ccc;
-}
-
-@media (max-width: 600px) {
-  .values-container {
-    grid-template-columns: 1fr;
-    /* Stack items vertically on smaller screens */
-  }
 }
 </style>

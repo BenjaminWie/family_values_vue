@@ -138,13 +138,12 @@ export default {
   /* Slide up into view on hover */
 }
 
-.value-card:hover~.value-card {
+.value-card:hover ~ .value-card {
   opacity: 0.8;
   /* Slightly fade out non-hovered cards */
   transition:
     transform 0.6s ease-out 0.2s,
-    /* Delay and smoothen the transition */
-    opacity 0.3s ease 0.2s;
+    /* Delay and smoothen the transition */ opacity 0.3s ease 0.2s;
 }
 
 /* Media Query for Small Screens */

@@ -28,7 +28,11 @@
       <!-- Display Narratives -->
       <div class="narrative-section">
         <h3 class="section-title">Narratives</h3>
-        <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="narrative-card">
+        <div
+          v-for="(narrative, index) in selectedValue.narratives"
+          :key="index"
+          class="narrative-card"
+        >
           <!-- <img v-if="narrative.image" :src="narrative.image" alt="Narrative Image" class="narrative-image" /> -->
           <div class="narrative-content">
             <h4>{{ narrative.title }}</h4>
