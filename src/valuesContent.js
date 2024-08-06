@@ -9,10 +9,10 @@ export const valuesContent = {
       id: 1,
       name: 'Selbstwirksam',
       quote:
-        '„Jeder Mensch ist der Architekt seiner eigenen Zukunft. Nur wer an sich glaubt, kann Berge versetzen.“ - Viktor Frankl',
+        '„Jeder Mensch ist der Architekt seiner eigenen Zukunft. Nur wer an sich glaubt, kann Berge versetzen.“',
       author: 'Viktor Frankl',
       gradient: 'linear-gradient(45deg, #34eb83, #349ceb)',
-      image: selbstwirksamImage,
+      image: 'selbstwirksamImage',
       narratives: [
         {
           title: 'Technologie und Zukunftskompetenzen',
@@ -62,10 +62,10 @@ export const valuesContent = {
       id: 2,
       name: 'Gemeinsam',
       quote:
-        '„Einheit ist Stärke… wenn es Teamwork und Zusammenarbeit gibt, können wunderbare Dinge erreicht werden.“ - Mattie Stepanek',
+        '„Einheit ist Stärke… wenn es Teamwork und Zusammenarbeit gibt, können wunderbare Dinge erreicht werden.“',
       author: 'Mattie Stepanek',
       gradient: 'linear-gradient(45deg, #ff9a8b, #ffc3a0)',
-      image: gemeinsamImage,
+      image: 'gemeinsamImage',
       narratives: [
         {
           title: 'Familienzusammenhalt und Krisenbewältigung',
@@ -115,10 +115,10 @@ export const valuesContent = {
       id: 3,
       name: 'Verantwortlich',
       quote:
-        '„Unser Ziel muss es sein, das Leben auf dieser Erde zu bewahren und zu verbessern, und das erfordert eine Verantwortung von jedem von uns.“ - Jane Goodall',
+        '„Unser Ziel muss es sein, das Leben auf dieser Erde zu bewahren und zu verbessern, und das erfordert eine Verantwortung von jedem von uns.“',
       author: 'Jane Goodall',
       gradient: 'linear-gradient(45deg, #4b5320, #8b4513)',
-      image: verantwortlichImage,
+      image: 'verantwortlichImage',
       narratives: [
         {
           title: 'Verantwortung im Klimaschutz',
@@ -168,10 +168,10 @@ export const valuesContent = {
       id: 4,
       name: 'Dankbar',
       quote:
-        '„Dankbarkeit ist nicht nur die größte aller Tugenden, sondern auch die Mutter aller anderen.“ - Cicero',
+        '„Dankbarkeit ist nicht nur die größte aller Tugenden, sondern auch die Mutter aller anderen.“',
       author: 'Cicero',
       gradient: 'linear-gradient(45deg, #d3a4ff, #ffd1dc)',
-      image: dankbarImage,
+      image: 'dankbarImage',
       narratives: [
         {
           title: 'Dankbarkeit und mentale Gesundheit',
@@ -218,6 +218,7 @@ export const valuesContent = {
       ]
     }
   ]
+
   /*
   en: [
     {
