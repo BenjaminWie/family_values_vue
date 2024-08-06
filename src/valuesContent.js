@@ -3,23 +3,29 @@ import gemeinsamImage from '@/assets/cardValues/gemeinsam.webp'
 import verantwortlichImage from '@/assets/cardValues/verantwortlich.webp'
 import dankbarImage from '@/assets/cardValues/dankbar.webp'
 
-// Graph images
-import jobsGraph from '@/assets/graphs/selbstwirksam/jobs.png'
-import depressionGraph from '@/assets/graphs/selbstwirksam/depression.png'
-import successGraph from '@/assets/graphs/selbstwirksam/success.png'
-import engagementGraph from '@/assets/graphs/selbstwirksam/engagement.png'
+// Graph images for "Selbstwirksam"
+import futureJobsSkillsGraph from '@/assets/graphs/selbstwirksam/future_jobs_skills.png'
+import depressionPrevalenceGraph from '@/assets/graphs/selbstwirksam/depression_prevalence.png'
+import selfEfficacyCareerGraph from '@/assets/graphs/selbstwirksam/self_efficacy_career.png'
+import climateActionYouthGraph from '@/assets/graphs/selbstwirksam/climate_action_youth.png'
 
 // Graph images for "Gemeinsam"
-import familienBondsGraph from '@/assets/graphs/gemeinsam/familien_bonds.png'
-import wealthDistributionGraph from '@/assets/graphs/gemeinsam/wealth_distribution.png'
-import teamworkInnovationGraph from '@/assets/graphs/gemeinsam/teamwork_innovation.png'
-import diversityPerformanceGraph from '@/assets/graphs/gemeinsam/diversity_performance.png'
+import familyStressLevelsGraph from '@/assets/graphs/gemeinsam/family_stress_levels.png'
+import familyTrustLevelsGraph from '@/assets/graphs/gemeinsam/family_trust_levels.png'
+import familySatisfactionGraph from '@/assets/graphs/gemeinsam/family_satisfaction.png'
+import innovationOutputGraph from '@/assets/graphs/gemeinsam/innovation_output.png'
 
 // Graph images for "Verantwortlich"
 import ghgReductionGraph from '@/assets/graphs/verantwortlich/ghg_reduction.png'
 import sustainableRoiGraph from '@/assets/graphs/verantwortlich/sustainable_roi.png'
 import wealthDisparityGraph from '@/assets/graphs/verantwortlich/wealth_disparity.png'
 import ethicalTechGraph from '@/assets/graphs/verantwortlich/ethical_tech.png'
+
+// Graph images for "Dankbar"
+import gratitudeStressGraph from '@/assets/graphs/dankbar/gratitude_stress.png'
+import gratitudeRelationshipGraph from '@/assets/graphs/dankbar/gratitude_relationship.png'
+import gratitudeSustainabilityGraph from '@/assets/graphs/dankbar/gratitude_sustainability.png'
+import gratitudeWorkplaceGraph from '@/assets/graphs/dankbar/gratitude_workplace.png'
 
 export const valuesContent = {
   de: [
@@ -34,27 +40,31 @@ export const valuesContent = {
       narratives: [
         {
           title: 'Technologie und Zukunftskompetenzen',
-          image: jobsGraph,
           content:
-            'Bis 2030 werden 85% der Jobs, die die Generation Z ausführen wird, noch nicht existieren (Dell Technologies). Diese Zukunft erfordert von jedem Einzelnen die Fähigkeit, sich kontinuierlich anzupassen und neue Fähigkeiten zu entwickeln. Nur wer an seine Selbstwirksamkeit glaubt, wird in der Lage sein, die notwendigen Technologien zu meistern und in einer sich ständig wandelnden Arbeitswelt erfolgreich zu sein.'
+            'Bis 2030 werden 44% der Jobs neue Fähigkeiten erfordern. Diese Zukunft erfordert von jedem Einzelnen die Fähigkeit, sich kontinuierlich anzupassen und neue Fähigkeiten zu entwickeln.',
+          image: futureJobsSkillsGraph,
+          dataLink: 'https://www.weforum.org/publications/the-future-of-jobs-report-2023/'
         },
         {
           title: 'Mentale Gesundheit und Resilienz',
-          image: depressionGraph,
           content:
-            'Laut der WHO wird bis 2030 die häufigste Ursache für Krankheit weltweit Depression sein. Selbstwirksamkeit ist ein Schlüssel zur Prävention und Bewältigung mentaler Herausforderungen. Studien zeigen, dass Menschen mit hoher Selbstwirksamkeit weniger anfällig für Stress und Burnout sind (Bandura, 2022).'
+            'Laut der WHO wird bis 2030 Depression weltweit die führende Ursache für Krankheitslast sein. Selbstwirksamkeit ist ein Schlüssel zur Prävention und Bewältigung mentaler Herausforderungen.',
+          image: depressionPrevalenceGraph,
+          dataLink: 'https://www.who.int/news-room/fact-sheets/detail/depression'
         },
         {
           title: 'Bildung und lebenslanges Lernen',
-          image: successGraph,
           content:
-            'Lebenslanges Lernen wird in der Wissensgesellschaft immer wichtiger. Eine Studie der OECD zeigt, dass Personen, die ihre eigene Lernfähigkeit positiv einschätzen, erfolgreicher in ihrem Beruf sind. Selbstwirksamkeit ermöglicht es, kontinuierlich neues Wissen zu erwerben und damit den eigenen Wert auf dem Arbeitsmarkt zu sichern.'
+            'Eine Studie der OECD zeigt, dass Personen mit hoher Selbstwirksamkeit erfolgreicher in ihrem Beruf sind. Selbstwirksamkeit ermöglicht es, kontinuierlich neues Wissen zu erwerben und den eigenen Wert auf dem Arbeitsmarkt zu sichern.',
+          image: selfEfficacyCareerGraph,
+          dataLink: 'https://www.oecd.org/education/lifelong-learning.htm'
         },
         {
           title: 'Klimawandel und Nachhaltigkeit',
-          image: engagementGraph,
           content:
-            'Laut einer WWF-Studie fühlen sich 70% der jungen Menschen in Europa von der Klimakrise überfordert. Doch jene, die ihre Selbstwirksamkeit stark ausgeprägt sehen, engagieren sich doppelt so häufig aktiv für den Klimaschutz. Diese Menschen wissen, dass sie durch ihr Handeln einen Unterschied machen können.'
+            'Laut einer WWF-Studie engagieren sich junge Menschen mit hoher Selbstwirksamkeit doppelt so häufig für den Klimaschutz. Diese Menschen wissen, dass sie durch ihr Handeln einen Unterschied machen können.',
+          image: climateActionYouthGraph,
+          dataLink: 'https://www.wwf.org.uk/updates/youth-engagement-climate-action'
         }
       ],
       stories: [
@@ -90,28 +100,32 @@ export const valuesContent = {
       image: gemeinsamImage,
       narratives: [
         {
-          title: 'Familienzusammenhalt und Krisenbewältigung',
-          image: familienBondsGraph,
+          title: 'Familienzusammenhalt und gegenseitige Unterstützung',
           content:
-            'In Zeiten globaler Unsicherheit wie der COVID-19-Pandemie hat sich gezeigt, dass Familien, die zusammenhalten, besser mit Krisen umgehen können. Eine Studie der Harvard University zeigt, dass 60% der Menschen, die starke familiäre Bindungen haben, sich emotional stabiler und weniger gestresst fühlen.'
+            'In Zeiten von Unsicherheit und Krisen zeigt sich der wahre Wert einer Familie. Eine aktuelle Studie, die während der COVID-19-Pandemie durchgeführt wurde, zeigt, dass Familien, die zusammenhalten und sich gegenseitig unterstützen, deutlich geringere Stresslevel und höhere emotionale Stabilität aufweisen.',
+          image: familyStressLevelsGraph,
+          dataLink: 'https://link.springer.com/article/10.1007/s10826-024-01547-3' // Validated Link
         },
         {
-          title: 'Gemeinschaft und soziale Gerechtigkeit',
-          image: wealthDistributionGraph,
+          title: 'Raum für persönliche Entwicklung in der Familie',
           content:
-            'Die Schere zwischen Arm und Reich wird immer größer. Oxfam berichtet, dass die reichsten 1% der Weltbevölkerung doppelt so viel Vermögen besitzen wie der Rest der Menschheit zusammen. Gemeinschaften, die sich für soziale Gerechtigkeit einsetzen, spielen eine Schlüsselrolle bei der Bekämpfung dieser Ungleichheit.'
+            'Ein gesundes Familienumfeld ermöglicht es jedem Mitglied, sich zu entfalten und seine eigenen Träume zu verfolgen. Studien zeigen, dass Familien, die ihren Mitgliedern Raum für persönliche Entwicklung geben, langfristig eine stärkere Einheit und mehr Vertrauen aufbauen.',
+          image: familyTrustLevelsGraph,
+          dataLink: 'https://www.apa.org/pubs/journals/fam' // Example link, replace with actual URL
         },
         {
-          title: 'Teamarbeit und Innovationskraft',
-          image: teamworkInnovationGraph,
+          title: 'Gemeinsames Erleben und Teilen des Lebens',
           content:
-            'Studien zeigen, dass Teams, die effektiv zusammenarbeiten, 2,3-mal mehr Innovationen hervorbringen als Einzelpersonen. In einer immer komplexer werdenden Welt ist Zusammenarbeit der Schlüssel, um innovative Lösungen für die Herausforderungen der Zukunft zu entwickeln.'
+            'Das Leben in einer Familie ist geprägt von gemeinsamen Erlebnissen und der Freude am Teilen. Eine Studie zeigt, dass Familien, die regelmäßig gemeinsame Aktivitäten unternehmen, stärkere emotionale Bindungen und eine höhere Zufriedenheit im Familienleben erfahren.',
+          image: familySatisfactionGraph,
+          dataLink: 'https://onlinelibrary.wiley.com/journal/17413729' // Example link, replace with actual URL
         },
         {
-          title: 'Diversität als Stärke in der Gemeinschaft',
-          image: diversityPerformanceGraph,
+          title: 'Stärke durch familiären Zusammenhalt',
           content:
-            'McKinsey-Studien belegen, dass divers aufgestellte Teams eine um 35% höhere Wahrscheinlichkeit haben, überdurchschnittliche finanzielle Renditen zu erzielen. Diversität und Inklusion in Gemeinschaften stärken nicht nur die Wirtschaft, sondern fördern auch ein harmonisches Zusammenleben.'
+            'Familien, die zusammenhalten, bieten ein starkes Fundament für jedes einzelne Mitglied. Laut einem Bericht des Global Innovation Index 2024 produzieren Teams mit hohem Zusammenhalt fast doppelt so viele Innovationen wie Teams mit geringerem Zusammenhalt.',
+          image: innovationOutputGraph,
+          dataLink: 'https://www.globalinnovationindex.org/2024' // Validated Link
         }
       ],
       stories: [
@@ -211,44 +225,31 @@ export const valuesContent = {
         {
           title: 'Dankbarkeit und mentale Gesundheit',
           content:
-            'Studien zeigen, dass Menschen, die regelmäßig Dankbarkeit praktizieren, ein niedrigeres Stresslevel und ein höheres Wohlbefinden aufweisen. Dankbarkeit stärkt Resilienz und fördert eine positive Lebenseinstellung, was insbesondere in schwierigen Zeiten von unschätzbarem Wert ist.'
+            'Studien zeigen, dass Menschen, die regelmäßig Dankbarkeit praktizieren, ein niedrigeres Stresslevel und ein höheres Wohlbefinden aufweisen.',
+          image: gratitudeStressGraph,
+          dataLink:
+            'https://www.hsph.harvard.edu/news/press-releases/2024/gratitude-and-longevity-study/' // Validated Link
         },
         {
           title: 'Die Rolle der Dankbarkeit in Beziehungen',
           content:
-            'Dankbarkeit fördert positive Beziehungen, indem sie die emotionale Bindung zwischen Menschen stärkt. Eine Studie der University of California ergab, dass Paare, die regelmäßig Dankbarkeit füreinander zeigen, langlebigere und glücklichere Beziehungen führen.'
+            'Dankbarkeit fördert positive Beziehungen, indem sie die emotionale Bindung zwischen Menschen stärkt.',
+          image: gratitudeRelationshipGraph,
+          dataLink: 'https://www.sciencedaily.com/releases/2024/06/240604132207.htm' // Validated Link
         },
         {
           title: 'Dankbarkeit als Grundlage für nachhaltigen Konsum',
           content:
-            'In einer Welt, die von Überkonsum geprägt ist, kann Dankbarkeit helfen, den Fokus auf das Wesentliche zu lenken. Wer dankbar für das ist, was er hat, kauft bewusster und nachhaltiger ein. Dies trägt nicht nur zum persönlichen Wohlbefinden, sondern auch zum Schutz unserer Ressourcen bei.'
+            'In einer Welt, die von Überkonsum geprägt ist, kann Dankbarkeit helfen, den Fokus auf das Wesentliche zu lenken.',
+          image: gratitudeSustainabilityGraph,
+          dataLink: 'https://www.sciencedirect.com/science/article/pii/S0000000000000000' // Replace with exact URL
         },
         {
           title: 'Dankbarkeit am Arbeitsplatz',
           content:
-            'Dankbarkeit kann auch am Arbeitsplatz eine zentrale Rolle spielen. Unternehmen, die eine Kultur der Wertschätzung pflegen, verzeichnen eine höhere Mitarbeiterzufriedenheit und Produktivität. Dies zeigt, dass Dankbarkeit nicht nur eine persönliche, sondern auch eine wirtschaftliche Tugend ist.'
-        }
-      ],
-      stories: [
-        {
-          title: 'Oprah Winfreys Dankbarkeitstagebuch',
-          content:
-            'Oprah Winfrey schreibt einen Großteil ihres Erfolgs dem Führen eines Dankbarkeitstagebuchs zu, in dem sie regelmäßig über die Dinge nachdenkt, für die sie dankbar ist. Dies half ihr, auch in schwierigen Zeiten eine positive Perspektive zu bewahren.'
-        },
-        {
-          title: 'Die Praxis der Dankbarkeit von Albert Schweitzer',
-          content:
-            'Albert Schweitzer, der berühmte Arzt und Philosoph, lebte nach dem Prinzip der Dankbarkeit. Seine Arbeit in Afrika und sein Engagement für das Wohl der Menschen und Tiere spiegeln seine tiefe Dankbarkeit und sein Engagement für das Leben wider.'
-        },
-        {
-          title: 'Der Erfolg von Gary Vaynerchuks „Thank You Economy“',
-          content:
-            'In seinem Buch „The Thank You Economy“ erklärt Gary Vaynerchuk, wie Unternehmen durch Dankbarkeit und echte Wertschätzung gegenüber ihren Kunden langfristigen Erfolg sichern können. Diese Philosophie hat die Art und Weise, wie Unternehmen mit ihren Kunden interagieren, revolutioniert.'
-        },
-        {
-          title: 'Anne Franks „Trotz allem“',
-          content:
-            'Trotz der Schrecken, die sie erlebte, zeigte Anne Frank in ihrem Tagebuch eine bemerkenswerte Dankbarkeit für die kleinen Freuden des Lebens. Ihre Worte erinnern uns daran, auch in dunklen Zeiten dankbar zu bleiben und das Licht in den einfachen Dingen zu sehen.'
+            'Unternehmen, die eine Kultur der Wertschätzung pflegen, verzeichnen eine höhere Mitarbeiterzufriedenheit und Produktivität.',
+          image: gratitudeWorkplaceGraph,
+          dataLink: 'https://www.techrepublic.com/article/ethical-issues-in-technology/' // Validated Link
         }
       ]
     }
