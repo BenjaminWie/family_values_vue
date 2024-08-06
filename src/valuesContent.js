@@ -16,16 +16,16 @@ import familySatisfactionGraph from '@/assets/graphs/gemeinsam/family_satisfacti
 import innovationOutputGraph from '@/assets/graphs/gemeinsam/innovation_output.png'
 
 // Jacksons-inspired family image
-import jacksonFamilyImage from '@/assets/images/selbstwirksam/jackson_family.png'
+import jacksonFamilyImage from '@/assets/images/selbstwirksam/jackson_family.webp'
 
 // Obama-inspired family image
-import obamaFamilyImage from '@/assets/images/gemeinsam/obama_family.png'
+import obamaFamilyImage from '@/assets/images/gemeinsam/obama_family.webp'
 
 // Mannings-inspired family image
-import manningFamilyImage from '@/assets/images/gemeinsam/manning_family.png'
+import manningFamilyImage from '@/assets/images/gemeinsam/manning_family.webp'
 
 // Kennedys-inspired family image
-import kennedyFamilyImage from '@/assets/images/gemeinsam/kennedy_family.png'
+import kennedyFamilyImage from '@/assets/images/gemeinsam/kennedy_family.webp'
 
 // Graph images for "Verantwortlich"
 import ghgReductionGraph from '@/assets/graphs/verantwortlich/ghg_reduction.png'
@@ -174,6 +174,68 @@ export const valuesContent = {
       ]
     },
     {
+      id: 3,
+      name: 'Verantwortlich',
+      quote:
+        'Unser Ziel muss es sein, das Leben auf dieser Erde zu bewahren und zu verbessern, und das erfordert eine Verantwortung von jedem von uns.',
+      author: 'Jane Goodall',
+      gradient: 'linear-gradient(45deg, #4b5320, #8b4513)',
+      image: verantwortlichImage,
+      narratives: [
+        {
+          title: 'Verantwortung im Klimaschutz',
+          image: ghgReductionGraph,
+          dataLink: 'https://www.unep.org/resources/emissions-gap-report-2023',
+          content:
+            'Der Klimawandel ist die größte Herausforderung unserer Zeit. Die Treibhausgasemissionen müssen bis 2030 um 45% reduziert werden, um das 1,5-Grad-Ziel zu erreichen (UNFCCC). Jede Entscheidung, die wir treffen, von der Wahl des Verkehrsmittels bis zum Konsumverhalten, trägt zur globalen Erwärmung bei. Verantwortung zu übernehmen bedeutet, bewusste Entscheidungen zu treffen, um unseren ökologischen Fußabdruck zu minimieren.'
+        },
+        {
+          title: 'Wirtschaftliche Verantwortung und Nachhaltigkeit',
+          image: sustainableRoiGraph,
+          dataLink:
+            'https://www.bcg.com/publications/2023/total-societal-impact-the-new-bottom-line.aspx',
+          content:
+            'Immer mehr Unternehmen erkennen, dass nachhaltiges Wirtschaften nicht nur ethisch, sondern auch wirtschaftlich sinnvoll ist. Laut einer Studie von BCG erzielen Unternehmen, die sich auf Nachhaltigkeit konzentrieren, eine um 20% höhere Kapitalrendite. Verantwortung bedeutet, Geschäftsmodelle zu entwickeln, die langfristig ökologisch und sozial verträglich sind.'
+        },
+        {
+          title: 'Globale Gerechtigkeit und soziale Verantwortung',
+          image: wealthDisparityGraph,
+          dataLink: 'https://www.oxfam.org/en/research/time-care',
+          content:
+            'Die globale Ungleichheit hat dramatische Ausmaße erreicht. Oxfam berichtet, dass die 22 reichsten Männer der Welt mehr Vermögen besitzen als alle Frauen in Afrika zusammen. Verantwortung übernehmen bedeutet, sich aktiv für eine gerechtere Welt einzusetzen, sei es durch Spenden, ehrenamtliche Arbeit oder politische Teilhabe.'
+        },
+        {
+          title: 'Technologie und ethische Verantwortung',
+          image: ethicalTechGraph,
+          dataLink: 'https://www.techrepublic.com/article/ethical-issues-in-technology/',
+          content:
+            'Mit der zunehmenden Verbreitung von Künstlicher Intelligenz (KI) und Überwachungstechnologien müssen wir uns der ethischen Verantwortung bewusst sein, die mit ihrer Nutzung einhergeht. Ein verantwortungsvoller Umgang mit Technologie kann verhindern, dass sie zur Unterdrückung oder Überwachung missbraucht wird, und stattdessen zu einem Werkzeug für positive Veränderungen werden.'
+        }
+      ],
+      stories: [
+        {
+          title: 'Nelson Mandelas Vermächtnis',
+          content:
+            'Nelson Mandela trug maßgeblich dazu bei, das Apartheid-Regime in Südafrika zu beenden. Seine Verantwortung für sein Volk und seine unermüdliche Arbeit für Versöhnung und Gerechtigkeit machen ihn zu einer der bedeutendsten Persönlichkeiten des 20. Jahrhunderts.'
+        },
+        {
+          title: 'Greta Thunbergs globale Klimabewegung',
+          content:
+            'Greta Thunberg hat mit ihrem Streik für das Klima eine weltweite Bewegung ins Leben gerufen, die Millionen junger Menschen inspiriert hat, sich für den Schutz unseres Planeten einzusetzen. Sie zeigt, wie Einzelpersonen durch Übernahme von Verantwortung einen globalen Wandel anstoßen können.'
+        },
+        {
+          title: 'Jane Goodalls Einsatz für den Artenschutz',
+          content:
+            'Jane Goodall hat ihr Leben dem Schutz von Schimpansen und der Umwelt gewidmet. Ihr Engagement für Tiere und Natur zeigt, wie Verantwortung auf globaler Ebene dazu beitragen kann, das Leben auf der Erde zu bewahren.'
+        },
+        {
+          title: 'Der Erfolg von B-Corps',
+          content:
+            'B-Corps sind Unternehmen, die sich durch hohe Standards in den Bereichen soziale Verantwortung und ökologische Nachhaltigkeit auszeichnen. Sie zeigen, dass es möglich ist, wirtschaftlichen Erfolg mit ethischer Verantwortung zu vereinen.'
+        }
+      ]
+    },
+    {
       id: 4,
       name: 'Dankbar',
       quote:
@@ -210,6 +272,28 @@ export const valuesContent = {
             'Unternehmen, die eine Kultur der Wertschätzung pflegen, verzeichnen eine höhere Mitarbeiterzufriedenheit und Produktivität.',
           image: gratitudeWorkplaceGraph,
           dataLink: 'https://www.techrepublic.com/article/ethical-issues-in-technology/' // Validated Link
+        }
+      ],
+      stories: [
+        {
+          title: 'Oprah Winfreys Dankbarkeitstagebuch',
+          content:
+            'Oprah Winfrey schreibt einen Großteil ihres Erfolgs dem Führen eines Dankbarkeitstagebuchs zu, in dem sie regelmäßig über die Dinge nachdenkt, für die sie dankbar ist. Dies half ihr, auch in schwierigen Zeiten eine positive Perspektive zu bewahren.'
+        },
+        {
+          title: 'Die Praxis der Dankbarkeit von Albert Schweitzer',
+          content:
+            'Albert Schweitzer, der berühmte Arzt und Philosoph, lebte nach dem Prinzip der Dankbarkeit. Seine Arbeit in Afrika und sein Engagement für das Wohl der Menschen und Tiere spiegeln seine tiefe Dankbarkeit und sein Engagement für das Leben wider.'
+        },
+        {
+          title: 'Der Erfolg von Gary Vaynerchuks „Thank You Economy“',
+          content:
+            'In seinem Buch „The Thank You Economy“ erklärt Gary Vaynerchuk, wie Unternehmen durch Dankbarkeit und echte Wertschätzung gegenüber ihren Kunden langfristigen Erfolg sichern können. Diese Philosophie hat die Art und Weise, wie Unternehmen mit ihren Kunden interagieren, revolutioniert.'
+        },
+        {
+          title: 'Anne Franks „Trotz allem“',
+          content:
+            'Trotz der Schrecken, die sie erlebte, zeigte Anne Frank in ihrem Tagebuch eine bemerkenswerte Dankbarkeit für die kleinen Freuden des Lebens. Ihre Worte erinnern uns daran, auch in dunklen Zeiten dankbar zu bleiben und das Licht in den einfachen Dingen zu sehen.'
         }
       ]
     }
