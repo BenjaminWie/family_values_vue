@@ -149,24 +149,29 @@ export const valuesContent = {
         {
           title: 'Verantwortung im Klimaschutz',
           image: ghgReductionGraph,
+          dataLink: 'https://www.unep.org/resources/emissions-gap-report-2023',
           content:
             'Der Klimawandel ist die größte Herausforderung unserer Zeit. Die Treibhausgasemissionen müssen bis 2030 um 45% reduziert werden, um das 1,5-Grad-Ziel zu erreichen (UNFCCC). Jede Entscheidung, die wir treffen, von der Wahl des Verkehrsmittels bis zum Konsumverhalten, trägt zur globalen Erwärmung bei. Verantwortung zu übernehmen bedeutet, bewusste Entscheidungen zu treffen, um unseren ökologischen Fußabdruck zu minimieren.'
         },
         {
           title: 'Wirtschaftliche Verantwortung und Nachhaltigkeit',
           image: sustainableRoiGraph,
+          dataLink:
+            'https://www.bcg.com/publications/2023/total-societal-impact-the-new-bottom-line.aspx',
           content:
             'Immer mehr Unternehmen erkennen, dass nachhaltiges Wirtschaften nicht nur ethisch, sondern auch wirtschaftlich sinnvoll ist. Laut einer Studie von BCG erzielen Unternehmen, die sich auf Nachhaltigkeit konzentrieren, eine um 20% höhere Kapitalrendite. Verantwortung bedeutet, Geschäftsmodelle zu entwickeln, die langfristig ökologisch und sozial verträglich sind.'
         },
         {
           title: 'Globale Gerechtigkeit und soziale Verantwortung',
           image: wealthDisparityGraph,
+          dataLink: 'https://www.oxfam.org/en/research/time-care',
           content:
             'Die globale Ungleichheit hat dramatische Ausmaße erreicht. Oxfam berichtet, dass die 22 reichsten Männer der Welt mehr Vermögen besitzen als alle Frauen in Afrika zusammen. Verantwortung übernehmen bedeutet, sich aktiv für eine gerechtere Welt einzusetzen, sei es durch Spenden, ehrenamtliche Arbeit oder politische Teilhabe.'
         },
         {
           title: 'Technologie und ethische Verantwortung',
           image: ethicalTechGraph,
+          dataLink: 'https://www.techrepublic.com/article/ethical-issues-in-technology/',
           content:
             'Mit der zunehmenden Verbreitung von Künstlicher Intelligenz (KI) und Überwachungstechnologien müssen wir uns der ethischen Verantwortung bewusst sein, die mit ihrer Nutzung einhergeht. Ein verantwortungsvoller Umgang mit Technologie kann verhindern, dass sie zur Unterdrückung oder Überwachung missbraucht wird, und stattdessen zu einem Werkzeug für positive Veränderungen werden.'
         }

@@ -32,6 +32,8 @@
             <img v-if="narrative.image" :src="narrative.image" alt="Narrative Graph" class="graph-image" />
             <h4>{{ narrative.title }}</h4>
             <p>{{ narrative.content }}</p>
+            <a v-if="narrative.dataLink" :href="narrative.dataLink" target="_blank" class="data-link">Validate the
+              Data</a>
           </div>
         </div>
       </div>
@@ -190,5 +192,17 @@ export default {
   font-size: 1rem;
   color: #555;
   margin: 5px 0 0;
+}
+
+.data-link {
+  margin-top: 10px;
+  display: inline-block;
+  color: #3498db;
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.data-link:hover {
+  color: #2980b9;
 }
 </style>
