@@ -249,6 +249,13 @@ body {
     position: static;
     padding: 10px;
   }
+
+  .footer-left,
+  .footer-right {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
 }
 
 /* Footer styling */
@@ -259,7 +266,7 @@ footer.footer-section {
   bottom: 0;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
   background-color: #1a1a1a;
   color: #fff;
   align-items: center;
