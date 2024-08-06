@@ -16,7 +16,7 @@ import familySatisfactionGraph from '@/assets/graphs/gemeinsam/family_satisfacti
 import innovationOutputGraph from '@/assets/graphs/gemeinsam/innovation_output.png'
 
 // Jacksons-inspired family image
-import jacksonFamilyImage from '@/assets/images/selbstwirksam/jackson_family.webp'
+import jacksonFamilyImage from '@/assets/images/gemeinsam/jackson_family.webp'
 
 // Obama-inspired family image
 import obamaFamilyImage from '@/assets/images/gemeinsam/obama_family.webp'
