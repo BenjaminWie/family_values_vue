@@ -9,6 +9,12 @@ import depressionPrevalenceGraph from '@/assets/graphs/selbstwirksam/depression_
 import selfEfficacyCareerGraph from '@/assets/graphs/selbstwirksam/self_efficacy_career.png'
 import climateActionYouthGraph from '@/assets/graphs/selbstwirksam/climate_action_youth.png'
 
+// Importing images for "Selbstwirksam" value stories
+import rosaParksImage from '@/assets/images/selbstwirksam/rosa_parks.webp'
+import hawkingScientistImage from '@/assets/images/selbstwirksam/hawking_scientist.webp'
+import mediaMogulImage from '@/assets/images/selbstwirksam/media_mogul.webp'
+import pioneeringScientistImage from '@/assets/images/selbstwirksam/pioneering_scientist.webp'
+
 // Graph images for "Gemeinsam"
 import familyStressLevelsGraph from '@/assets/graphs/gemeinsam/family_stress_levels.png'
 import familyTrustLevelsGraph from '@/assets/graphs/gemeinsam/family_trust_levels.png'
@@ -81,25 +87,32 @@ export const valuesContent = {
       ],
       stories: [
         {
-          title: 'Greta Thunbergs Klimastreik',
-          image: jacksonFamilyImage,
+          title: 'Rosa Parks: Der Funke der Bürgerrechtsbewegung',
           content:
-            'Greta Thunberg begann ihren Schulstreik alleine. Doch ihr Glaube an die Wirksamkeit ihrer Aktionen führte zu einer globalen Bewegung, die Millionen inspiriert hat, sich aktiv für den Klimaschutz einzusetzen. Sie zeigt, wie stark Selbstwirksamkeit sein kann, wenn sie mit einer klaren Vision verbunden ist.'
+            "Als Rosa Parks 1955 in Montgomery, Alabama, sich weigerte, ihren Sitzplatz im Bus für einen weißen Passagier zu räumen, setzte sie einen Funken, der die Bürgerrechtsbewegung entzündete. Ihr Glaube an ihre eigene Fähigkeit, trotz widriger Umstände für Gerechtigkeit einzustehen, führte zu einem Boykott, der schließlich zur Aufhebung der Rassentrennung führte. Parks' einfache, aber mutige Tat ist ein kraftvolles Beispiel für Selbstwirksamkeit, das zeigt, wie eine einzelne Person durch festen Glauben an ihre Überzeugungen eine ganze Nation bewegen kann.",
+          image: rosaParksImage,
+          dataLink: 'https://www.biography.com/activist/rosa-parks'
         },
         {
-          title: 'Malala Yousafzais Kampf für Bildung',
+          title: 'Stephen Hawking: Der Kampf gegen die Unmöglichkeit',
           content:
-            'Malala Yousafzai trotzte den Taliban, um für das Recht auf Bildung für Mädchen einzutreten. Ihre Entschlossenheit und ihr Glaube an die eigene Fähigkeit, Veränderungen herbeizuführen, machten sie zu einer globalen Ikone des Widerstands und der Hoffnung.'
+            'Stephen Hawking wurde in jungen Jahren mit ALS diagnostiziert und ihm wurden nur wenige Jahre Lebenszeit prognostiziert. Doch Hawking widersetzte sich den Erwartungen und setzte seine Arbeit als Physiker fort, um einige der komplexesten Geheimnisse des Universums zu entschlüsseln. Sein Glaube an seine intellektuelle Fähigkeit trotz körperlicher Einschränkungen führte zu bahnbrechenden Entdeckungen, die unser Verständnis des Kosmos revolutionierten. Hawkings Leben ist ein eindrucksvolles Zeugnis für Selbstwirksamkeit und die Kraft des menschlichen Geistes, Grenzen zu überwinden.',
+          image: hawkingScientistImage,
+          dataLink: 'https://www.hawking.org.uk/biography'
         },
         {
-          title: 'Nelson Mandelas Kampf für Gerechtigkeit',
+          title: 'Oprah Winfrey: Vom Trauma zur Triumph',
           content:
-            'Nelson Mandela verbrachte 27 Jahre im Gefängnis und blieb dennoch überzeugt, dass er die Apartheid überwinden könnte. Sein unerschütterlicher Glaube an seine Mission und seine Selbstwirksamkeit führten zu einer friedlichen Revolution in Südafrika.'
+            'Oprah Winfrey wuchs in Armut auf und erlebte in ihrer Kindheit Missbrauch und Ausgrenzung. Doch anstatt sich von diesen Erfahrungen definieren zu lassen, entwickelte sie ein starkes Gefühl der Selbstwirksamkeit. Sie nutzte ihre schwierigen Anfänge als Antrieb, um eine der erfolgreichsten und einflussreichsten Medienpersönlichkeiten der Welt zu werden. Oprah zeigt, wie Selbstwirksamkeit es ermöglicht, die eigene Geschichte neu zu schreiben und trotz aller Widrigkeiten Erfolg zu erreichen.',
+          image: mediaMogulImage,
+          dataLink: 'https://www.oprah.com/pressroom/oprah-winfrey-biography/all'
         },
         {
-          title: 'Elon Musks Vision von einer nachhaltigen Zukunft',
+          title: 'Marie Curie: Die Pionierin der Wissenschaft',
           content:
-            'Elon Musk hat sich zum Ziel gesetzt, die Welt durch nachhaltige Technologien zu verändern. Von der Elektromobilität bis zur Raumfahrt: Musks Glaube an seine Fähigkeiten und seine Selbstwirksamkeit treiben ihn an, Lösungen für die drängendsten Probleme der Menschheit zu finden.'
+            'Marie Curie, die erste Frau, die einen Nobelpreis gewann, und die einzige Person, die Nobelpreise in zwei wissenschaftlichen Disziplinen erhielt, zeigt eindrucksvoll, was Selbstwirksamkeit bewirken kann. Trotz der Vorurteile und Hindernisse, denen sie als Frau in der Wissenschaft begegnete, verfolgte sie unbeirrt ihre Forschung und entdeckte Radium und Polonium. Curie’s unerschütterlicher Glaube an ihre Fähigkeiten und ihre Arbeit schuf die Grundlagen für viele moderne wissenschaftliche Entwicklungen.',
+          image: pioneeringScientistImage,
+          dataLink: 'https://www.nobelprize.org/womenwhochangedscience/stories/marie-curie'
         }
       ]
     },
