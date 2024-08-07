@@ -48,24 +48,36 @@ function __VLS_template() {
         for (const [story, index] of __VLS_getVForSourceType((__VLS_ctx.selectedValue.stories))) {
             __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ key: ((index)), ...{ class: ("story-card") }, });
             __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("story-content") }, });
+            if (story.image) {
+                __VLS_elementAsFunction(__VLS_intrinsicElements.img)({ src: ((story.image)), alt: ("Story Image"), ...{ class: ("graph-image") }, });
+                // @ts-ignore
+                [selectedValue,];
+            }
             __VLS_elementAsFunction(__VLS_intrinsicElements.h4, __VLS_intrinsicElements.h4)({});
             (story.title);
-            // @ts-ignore
-            [selectedValue,];
             __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
             (story.content);
+            if (story.dataLink) {
+                __VLS_elementAsFunction(__VLS_intrinsicElements.a, __VLS_intrinsicElements.a)({ href: ((story.dataLink)), target: ("_blank"), ...{ class: ("data-link") }, });
+            }
         }
         __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("narrative-section") }, });
         __VLS_elementAsFunction(__VLS_intrinsicElements.h3, __VLS_intrinsicElements.h3)({ ...{ class: ("section-title") }, });
         for (const [narrative, index] of __VLS_getVForSourceType((__VLS_ctx.selectedValue.narratives))) {
             __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ key: ((index)), ...{ class: ("narrative-card") }, });
             __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("narrative-content") }, });
+            if (narrative.image) {
+                __VLS_elementAsFunction(__VLS_intrinsicElements.img)({ src: ((narrative.image)), alt: ("Narrative Graph"), ...{ class: ("graph-image") }, });
+                // @ts-ignore
+                [selectedValue,];
+            }
             __VLS_elementAsFunction(__VLS_intrinsicElements.h4, __VLS_intrinsicElements.h4)({});
             (narrative.title);
-            // @ts-ignore
-            [selectedValue,];
             __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
             (narrative.content);
+            if (narrative.dataLink) {
+                __VLS_elementAsFunction(__VLS_intrinsicElements.a, __VLS_intrinsicElements.a)({ href: ((narrative.dataLink)), target: ("_blank"), ...{ class: ("data-link") }, });
+            }
         }
     }
     if (typeof __VLS_styleScopedClasses === 'object' && !Array.isArray(__VLS_styleScopedClasses)) {
@@ -82,10 +94,14 @@ function __VLS_template() {
         __VLS_styleScopedClasses['section-title'];
         __VLS_styleScopedClasses['story-card'];
         __VLS_styleScopedClasses['story-content'];
+        __VLS_styleScopedClasses['graph-image'];
+        __VLS_styleScopedClasses['data-link'];
         __VLS_styleScopedClasses['narrative-section'];
         __VLS_styleScopedClasses['section-title'];
         __VLS_styleScopedClasses['narrative-card'];
         __VLS_styleScopedClasses['narrative-content'];
+        __VLS_styleScopedClasses['graph-image'];
+        __VLS_styleScopedClasses['data-link'];
     }
     var __VLS_slots;
     return __VLS_slots;

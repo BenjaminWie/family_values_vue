@@ -27,6 +27,9 @@ jobs:
       - name: Add jekyll
         run: echo > dist/.nojekyll
 
+      - name: Copy MP3 files to assets
+        run: cp -r public/ dist/assets
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

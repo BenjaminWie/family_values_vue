@@ -55,6 +55,10 @@ function __VLS_template() {
     __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("main-content") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.section, __VLS_intrinsicElements.section)({ ...{ class: ("welcome-section") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.header, __VLS_intrinsicElements.header)({});
+    __VLS_elementAsFunction(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({ ...{ class: ("logo-container") }, });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.svg, __VLS_intrinsicElements.svg)({ xmlns: ("http://www.w3.org/2000/svg"), viewBox: ("0 0 100 100"), fill: ("none"), stroke: ("#FF4500"), "stroke-width": ("4"), });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.path)({ d: ("M10 50 L50 10 L90 50 L90 90 L10 90 Z"), fill: ("none"), });
+    __VLS_elementAsFunction(__VLS_intrinsicElements.path)({ d: ("M50 55 C40 45, 30 55, 50 75 C70 55, 60 45, 50 55 Z"), fill: ("#FF4500"), });
     __VLS_elementAsFunction(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({ ...{ class: ("main-header") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({ ...{ class: ("subtitle") }, });
     __VLS_elementAsFunction(__VLS_intrinsicElements.section, __VLS_intrinsicElements.section)({ ...{ class: ("audio-section") }, });
@@ -122,6 +126,7 @@ function __VLS_template() {
         __VLS_styleScopedClasses['main-content'];
         __VLS_styleScopedClasses['main-content'];
         __VLS_styleScopedClasses['welcome-section'];
+        __VLS_styleScopedClasses['logo-container'];
         __VLS_styleScopedClasses['main-header'];
         __VLS_styleScopedClasses['subtitle'];
         __VLS_styleScopedClasses['audio-section'];
