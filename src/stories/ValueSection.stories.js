@@ -1,3 +1,4 @@
+import ValueSection from '../components/ValueSection.vue'
 import selbstwirksamImage from '@/assets/cardValues/selbstwirksam.webp'
 import gemeinsamImage from '@/assets/cardValues/gemeinsam.webp'
 import verantwortlichImage from '@/assets/cardValues/verantwortlich.webp'
@@ -51,8 +52,22 @@ import mayaAngelouImage from '@/assets/images/dankbar/maya_angelou.webp'
 import nickVujicicImage from '@/assets/images/dankbar/nick_vujicic.webp'
 import sherylSandbergImage from '@/assets/images/dankbar/sheryl_sandberg.webp'
 
-export const valuesContent = {
-  de: [
+export default {
+  title: 'Components/ValueSection',
+  component: ValueSection
+}
+
+const Template = (args) => ({
+  components: { ValueSection },
+  setup() {
+    return { args }
+  },
+  template: '<ValueSection v-bind="args" />'
+})
+
+export const Default = Template.bind({})
+Default.args = {
+  value: [
     {
       id: 1,
       name: 'Selbstwirksam',
@@ -61,6 +76,8 @@ export const valuesContent = {
       author: 'Viktor Frankl',
       gradient: 'linear-gradient(45deg, #34eb83, #349ceb)',
       image: selbstwirksamImage,
+      szene:
+        'Ein kleiner Junge steht in einem abstrakten Raum mit weichen, fließenden Formen. Er hat gerade erfolgreich eine Bauklötzchen-Pyramide aufgebaut, die stabil und leuchtend in den Farben Gelb (für Erfolg), Grün (für Achtsamkeit), und Blau (für Selbstwirksamkeit) strahlt. Die Szene ist minimalistisch und zeigt im Hintergrund sanfte, abstrahierte Elemente, die die Konzentration und den Fokus des Kindes unterstützen. Die Beleuchtung ist weich und lenkt den Blick auf die Pyramide, die als Symbol für das Erreichen eines selbstgestellten Ziels steht. Es ist ein ruhiger, aber triumphaler Moment, der den Wert von Selbstwirksamkeit verdeutlicht.',
       narratives: [
         {
           title: 'Technologie und Zukunftskompetenzen',
@@ -270,8 +287,6 @@ export const valuesContent = {
       author: 'Cicero',
       gradient: 'linear-gradient(45deg, #d3a4ff, #ffd1dc)',
       image: dankbarImage,
-      szene:
-        'Imagine explaining gratitude to a small child by showing them a scene where they receive something they love, like a small glowing heart or a gift. The child smiles warmly as they hold the gift close, feeling happy and thankful. The colors will focus on warm tones like gold and soft pinks to convey the warmth of appreciation and love.',
       narratives: [
         {
           title: 'Dankbarkeit und mentale Gesundheit',
@@ -335,220 +350,4 @@ export const valuesContent = {
       ]
     }
   ]
-
-  /*
-  en: [
-    {
-      id: 1,
-      name: 'Self-Efficacy',
-      quote:
-        '“Man is the architect of his own future. Only those who believe in themselves can move mountains.” - Viktor Frankl',
-      author: 'Viktor Frankl',
-      gradient: 'linear-gradient(45deg, #34eb83, #349ceb)',
-      image: selbstwirksamImage,
-      narratives: [
-        {
-          title: 'Technology and Future Skills',
-          content:
-            'By 2030, 85% of the jobs that Generation Z will perform do not yet exist (Dell Technologies). This future demands the ability to continuously adapt and acquire new skills. Those who believe in their self-efficacy will be able to master the necessary technologies and succeed in an ever-changing job market.'
-        },
-        {
-          title: 'Mental Health and Resilience',
-          content:
-            'According to the WHO, depression will be the leading cause of illness worldwide by 2030. Self-efficacy is key to preventing and coping with mental challenges. Studies show that people with high self-efficacy are less susceptible to stress and burnout (Bandura, 2022).'
-        },
-        {
-          title: 'Education and Lifelong Learning',
-          content:
-            'Lifelong learning is becoming increasingly important in the knowledge society. An OECD study shows that people who positively assess their own learning ability are more successful in their careers. Self-efficacy enables individuals to continuously acquire new knowledge and thus secure their value in the job market.'
-        },
-        {
-          title: 'Climate Change and Sustainability',
-          content:
-            'According to a WWF study, 70% of young people in Europe feel overwhelmed by the climate crisis. However, those who perceive themselves as having high self-efficacy are twice as likely to engage actively in climate protection. These individuals know that their actions can make a difference.'
-        }
-      ],
-      stories: [
-        {
-          title: "Greta Thunberg's Climate Strike",
-          content:
-            'Greta Thunberg began her school strike alone, but her belief in the effectiveness of her actions led to a global movement that has inspired millions to actively engage in climate protection. She demonstrates how powerful self-efficacy can be when combined with a clear vision.'
-        },
-        {
-          title: "Malala Yousafzai's Fight for Education",
-          content:
-            "Malala Yousafzai defied the Taliban to advocate for girls' right to education. Her determination and belief in her ability to make a difference made her a global icon of resistance and hope."
-        },
-        {
-          title: "Nelson Mandela's Fight for Justice",
-          content:
-            'Nelson Mandela spent 27 years in prison yet remained convinced that he could overcome apartheid. His unwavering belief in his mission and self-efficacy led to a peaceful revolution in South Africa.'
-        },
-        {
-          title: "Elon Musk's Vision of a Sustainable Future",
-          content:
-            "Elon Musk has set out to change the world through sustainable technologies. From electric vehicles to space exploration, Musk's belief in his abilities and self-efficacy drives him to find solutions to humanity's most pressing problems."
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: 'Togetherness',
-      quote:
-        '“Unity is strength... when there is teamwork and collaboration, wonderful things can be achieved.” - Mattie Stepanek',
-      author: 'Mattie Stepanek',
-      gradient: 'linear-gradient(45deg, #ff9a8b, #ffc3a0)',
-      image: gemeinsamImage,
-      narratives: [
-        {
-          title: 'Family Cohesion and Crisis Management',
-          content:
-            'During times of global uncertainty, such as the COVID-19 pandemic, families that stick together can better cope with crises. A Harvard University study shows that 60% of people with strong family bonds feel more emotionally stable and less stressed.'
-        },
-        {
-          title: 'Community and Social Justice',
-          content:
-            "The gap between the rich and the poor is widening. Oxfam reports that the richest 1% of the world's population owns twice as much wealth as the rest of humanity combined. Communities that work for social justice play a key role in combating this inequality."
-        },
-        {
-          title: 'Teamwork and Innovation',
-          content:
-            'Studies show that teams that work together effectively produce 2.3 times more innovation than individuals. In an increasingly complex world, collaboration is key to developing innovative solutions to future challenges.'
-        },
-        {
-          title: 'Diversity as a Strength in Community',
-          content:
-            'McKinsey studies show that diverse teams are 35% more likely to achieve above-average financial returns. Diversity and inclusion in communities not only strengthen the economy but also promote harmonious coexistence.'
-        }
-      ],
-      stories: [
-        {
-          title: 'The Civil Rights Movement',
-          content:
-            'The success of the Civil Rights Movement in the United States was only possible through the community of people who fought for a common goal: equality. Martin Luther King Jr. understood the power of unity and led a movement that profoundly changed American society.'
-        },
-        {
-          title: 'Ubuntu - "I am because we are"',
-          content:
-            'The African philosophy of Ubuntu emphasizes the importance of community: "I am because we are." This mindset promotes awareness of mutual dependence and the common good, leading to stronger cohesion in society.'
-        },
-        {
-          title: 'The Success Story of Mondragon',
-          content:
-            'Mondragon is one of the largest cooperatives in the world. It shows how communal ownership and collaboration can create a sustainable and fair economic system based on the values of solidarity and participation.'
-        },
-        {
-          title: 'European Unity After World War II',
-          content:
-            'After the horrors of World War II, European nations created the European Union to ensure peace and prosperity through economic and political cooperation. The EU is a living example of how togetherness can promote peace and stability across national borders.'
-        }
-      ]
-    },
-    {
-      id: 3,
-      name: 'Responsibility',
-      quote:
-        '“Our goal must be to preserve and improve life on this Earth, and that requires responsibility from each of us.”',
-      author: 'Jane Goodall',
-      gradient: 'linear-gradient(45deg, #4b5320, #8b4513)',
-      image: verantwortlichImage,
-      narratives: [
-        {
-          title: 'Responsibility in Climate Protection',
-          content:
-            'Climate change is the greatest challenge of our time. Greenhouse gas emissions must be reduced by 45% by 2030 to achieve the 1.5-degree target (UNFCCC). Every decision we make, from the choice of transportation to consumption behavior, contributes to global warming. Taking responsibility means making conscious choices to minimize our ecological footprint.'
-        },
-        {
-          title: 'Economic Responsibility and Sustainability',
-          content:
-            'More and more companies are recognizing that sustainable business practices are not only ethical but also economically sensible. According to a BCG study, companies that focus on sustainability achieve a 20% higher return on investment. Responsibility means developing business models that are long-term ecologically and socially sustainable.'
-        },
-        {
-          title: 'Global Justice and Social Responsibility',
-          content:
-            'Global inequality has reached dramatic proportions. Oxfam reports that the 22 richest men in the world own more wealth than all the women in Africa combined. Taking responsibility means actively working for a fairer world, whether through donations, volunteer work, or political participation.'
-        },
-        {
-          title: 'Technology and Ethical Responsibility',
-          content:
-            'As artificial intelligence (AI) and surveillance technologies become more widespread, we must be aware of the ethical responsibility that comes with their use. A responsible approach to technology can prevent its misuse for oppression or surveillance and instead turn it into a tool for positive change.'
-        }
-      ],
-      stories: [
-        {
-          title: "Nelson Mandela's Legacy",
-          content:
-            'Nelson Mandela played a key role in ending apartheid in South Africa. His responsibility to his people and his tireless work for reconciliation and justice make him one of the most significant figures of the 20th century.'
-        },
-        {
-          title: "Greta Thunberg's Global Climate Movement",
-          content:
-            'Greta Thunberg started a global movement with her strike for the climate, inspiring millions of young people to take action to protect our planet. She shows how individuals can spark global change by taking responsibility.'
-        },
-        {
-          title: "Jane Goodall's Commitment to Conservation",
-          content:
-            'Jane Goodall has dedicated her life to protecting chimpanzees and the environment. Her commitment to animals and nature shows how responsibility on a global scale can help preserve life on Earth.'
-        },
-        {
-          title: 'The Success of B-Corps',
-          content:
-            'B-Corps are companies that excel in social responsibility and environmental sustainability. They demonstrate that it is possible to combine economic success with ethical responsibility.'
-        }
-      ]
-    },
-    {
-      id: 4,
-      name: 'Gratitude',
-      quote: '“Gratitude is not only the greatest of virtues but the parent of all others.”',
-      author: 'Cicero',
-      gradient: 'linear-gradient(45deg, #d3a4ff, #ffd1dc)',
-      image: dankbarImage,
-      narratives: [
-        {
-          title: 'Gratitude and Mental Health',
-          content:
-            'Studies show that people who regularly practice gratitude have lower stress levels and higher well-being. Gratitude strengthens resilience and promotes a positive outlook on life, which is invaluable, especially in challenging times.'
-        },
-        {
-          title: 'The Role of Gratitude in Relationships',
-          content:
-            'Gratitude fosters positive relationships by strengthening the emotional bond between people. A study from the University of California found that couples who regularly express gratitude to each other have longer-lasting and happier relationships.'
-        },
-        {
-          title: 'Gratitude as a Foundation for Sustainable Consumption',
-          content:
-            'In a world dominated by overconsumption, gratitude can help focus on what is essential. Those who are grateful for what they have are more likely to make conscious and sustainable purchasing decisions. This not only contributes to personal well-being but also helps protect our resources.'
-        },
-        {
-          title: 'Gratitude in the Workplace',
-          content:
-            'Gratitude can also play a central role in the workplace. Companies that cultivate a culture of appreciation report higher employee satisfaction and productivity. This demonstrates that gratitude is not only a personal virtue but also an economic one.'
-        }
-      ],
-      stories: [
-        {
-          title: "Oprah Winfrey's Gratitude Journal",
-          content:
-            'Oprah Winfrey attributes much of her success to keeping a gratitude journal, where she regularly reflects on the things she is thankful for. This practice helped her maintain a positive perspective even in challenging times.'
-        },
-        {
-          title: 'The Gratitude Practice of Albert Schweitzer',
-          content:
-            'Albert Schweitzer, the famous physician and philosopher, lived by the principle of gratitude. His work in Africa and his dedication to the well-being of people and animals reflect his deep gratitude and commitment to life.'
-        },
-        {
-          title: "The Success of Gary Vaynerchuk's “Thank You Economy”",
-          content:
-            'In his book “The Thank You Economy,” Gary Vaynerchuk explains how businesses can secure long-term success through gratitude and genuine appreciation for their customers. This philosophy has revolutionized the way companies interact with their customers.'
-        },
-        {
-          title: 'Anne Frank\'s "Despite Everything"',
-          content:
-            'Despite the horrors she experienced, Anne Frank showed remarkable gratitude for the small joys of life in her diary. Her words remind us to remain thankful even in dark times and to see the light in simple things.'
-        }
-      ]
-    }
-  ]
-    */
 }

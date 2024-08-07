@@ -1,46 +1,68 @@
 <template>
-  <div v-if="show" class="modal-backdrop" @click.self="close">
-    <div class="modal-content">
-      <button class="close-button" @click="close" aria-label="closeModal">✕</button>
+  <div v-if="show"
+    class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 md:p-8 lg:p-12">
+    <!-- Background click closes modal -->
+    <div @click.self="closeModal" class="absolute inset-0"></div>
 
-      <!-- Value Header with Background Gradient and Image -->
-      <div class="value-header" :style="{ background: selectedValue.gradient }">
-        <img :src="selectedValue.image" alt="Value Image" class="value-image" />
-        <div class="value-text">
-          <h2 class="value-title">{{ selectedValue.name }}</h2>
-          <p class="value-quote">“{{ selectedValue.quote }}”</p>
-          <p class="value-author">- {{ selectedValue.author }}</p>
+    <!-- Modal Content -->
+    <transition name="modal">
+      <div
+        class="relative bg-gray-800 text-gray-100 rounded-lg shadow-lg w-full max-w-4xl p-6 md:p-8 lg:p-10 overflow-y-auto max-h-full">
+
+        <!-- Image of the Value -->
+        <img :src="selectedValue.image" alt="Value Image" class="w-full rounded-lg shadow-md mb-6">
+
+        <div class="mb-6">
+          <!-- Value Name -->
+          <h2 class="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
+            {{ selectedValue.name }}
+          </h2>
+
+          <!-- Quote -->
+          <p class="text-lg md:text-xl lg:text-2xl italic text-gray-300 mb-4">
+            “{{ selectedValue.quote }}”
+          </p>
+
+          <!-- Author -->
+          <p class="text-md md:text-lg lg:text-xl text-gray-400">
+            - {{ selectedValue.author }}
+          </p>
         </div>
-      </div>
 
-      <!-- Display Stories -->
-      <div class="story-section">
-        <h3 class="section-title">Stories</h3>
-        <div v-for="(story, index) in selectedValue.stories" :key="index" class="story-card">
-          <div class="story-content">
-            <img v-if="story.image" :src="story.image" alt="Story Image" class="graph-image" />
-            <h4>{{ story.title }}</h4>
-            <p>{{ story.content }}</p>
-            <a v-if="story.dataLink" :href="story.dataLink" target="_blank" class="data-link">Klingt spannend - erzähl
-              mir mehr!</a>
+        <hr class="border-gray-600 mb-6">
+
+        <div class="space-y-8">
+          <!-- Story Section -->
+          <div v-if="selectedValue.stories.length" class="mb-8 space-y-8">
+            <h3 class="text-2xl font-semibold mb-4">Stories</h3>
+            <div v-for="(story, index) in selectedValue.stories" :key="index" class="space-y-6">
+              <img :src="story.image" alt="Story Image" class="w-full rounded-lg shadow-md mb-4">
+              <h4 class="text-xl font-semibold text-gray-200">{{ story.title }}</h4>
+              <p class="text-lg text-gray-400">{{ story.content }}</p>
+              <a v-if="story.dataLink" :href="story.dataLink" target="_blank" class="text-teal-400 hover:underline">
+                Read More
+              </a>
+            </div>
+          </div>
+
+          <hr class="border-gray-600 mb-6">
+
+          <!-- Narrative Section -->
+          <div v-if="selectedValue.narratives.length" class="space-y-8">
+            <h3 class="text-2xl font-semibold mb-4">Narratives</h3>
+            <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="space-y-6">
+              <img :src="narrative.image" alt="Narrative Image" class="w-full rounded-lg shadow-md mb-4">
+              <h4 class="text-xl font-semibold text-gray-200">{{ narrative.title }}</h4>
+              <p class="text-lg text-gray-400">{{ narrative.content }}</p>
+              <a v-if="narrative.dataLink" :href="narrative.dataLink" target="_blank"
+                class="text-teal-400 hover:underline">
+                Validate the Data
+              </a>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Display Narratives -->
-      <div class="narrative-section">
-        <h3 class="section-title">Narratives</h3>
-        <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="narrative-card">
-          <div class="narrative-content">
-            <img v-if="narrative.image" :src="narrative.image" alt="Narrative Graph" class="graph-image" />
-            <h4>{{ narrative.title }}</h4>
-            <p>{{ narrative.content }}</p>
-            <a v-if="narrative.dataLink" :href="narrative.dataLink" target="_blank" class="data-link">Validate the
-              Data</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -51,7 +73,7 @@ export default {
     selectedValue: Object
   },
   methods: {
-    close() {
+    closeModal() {
       this.$emit('close-modal');
     }
   }
@@ -59,153 +81,76 @@ export default {
 </script>
 
 <style scoped>
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.89);
+/* Modal Animation */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-enter,
+.modal-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* Close Button Styling */
+button.fixed {
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-  padding: 20px;
-  backdrop-filter: blur(5px);
+  font-size: 24px;
+  font-weight: bold;
+  color: #444;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+button.fixed:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+/* General Spacing */
 .modal-content {
-  position: relative;
-  background: white;
-  color: #333;
-  border-radius: 10px;
-  padding: 0;
-  max-width: 800px;
-  width: 100%;
-  text-align: left;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  overflow-y: auto;
-  max-height: 80vh;
+  padding: 1.5rem;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  max-width: 90vw;
+  margin: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.close-button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #666;
-}
-
-.close-button:hover {
-  color: #000;
-}
-
-/* Value Header */
-.value-header {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-radius: 10px 10px 0 0;
-  color: white;
-}
-
-.value-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
-.value-text {
-  flex: 1;
-}
-
-.value-title {
+/* Typography Adjustments */
+h2 {
   font-size: 2rem;
-  margin: 0 0 10px;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
 }
 
-.value-quote {
-  font-size: 1.2rem;
-  font-style: italic;
-  margin: 0 0 5px;
+p {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
-.value-author {
-  font-size: 1rem;
+h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-/* Narrative and Story Sections */
-.section-title {
-  font-size: 1.8rem;
-  margin: 20px 20px 10px;
-  color: #2c3e50;
+h4 {
+  font-size: 1.375rem;
+  font-weight: 600;
 }
 
-.narrative-section,
-.story-section {
-  padding: 20px;
-}
-
-.narrative-card,
-.story-card {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-}
-
-.narrative-card {
-  flex-direction: row;
-}
-
-.graph-image {
-  margin-top: 10px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.story-card {
-  flex-direction: row;
-}
-
-.narrative-content,
-.story-content {
-  flex: 1;
-}
-
-.narrative-card h4,
-.story-card h4 {
-  margin-top: 0;
-  font-size: 1.4rem;
-  color: #34495e;
-}
-
-.narrative-card p,
-.story-card p {
-  font-size: 1rem;
-  color: #555;
-  margin: 5px 0 0;
-}
-
-.data-link {
-  margin-top: 10px;
-  display: inline-block;
-  color: #3498db;
-  text-decoration: underline;
-  font-size: 0.9rem;
-}
-
-.data-link:hover {
-  color: #2980b9;
+a {
+  color: #38b2ac;
+  font-weight: 500;
 }
 </style>

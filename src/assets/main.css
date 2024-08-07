@@ -1,4 +1,7 @@
 @import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 #app {
   display: grid;
@@ -7,31 +10,32 @@
   height: 100vh;
   margin: 0 auto;
   font-weight: normal;
+  padding: 0 1rem;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+body {
+  background-color: #1a1a1a; /* Ensure dark background is set globally */
+  color: #f5f5f5;
+  margin: 0;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
 }
 
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
   }
 
   #app {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr; /* Maintain single-column layout */
     padding: 0 2rem;
   }
 }

@@ -1,80 +1,81 @@
 <template>
-  <!-- Language Switcher in Top Right-->
-  <div class="language-switcher">
-    <button @click="setLanguage('en')" aria-label="Set language to English">EN</button>
-    <button @click="setLanguage('de')" aria-label="Set language to German">DE</button>
-  </div>
+  <div class="flex flex-col min-h-screen text-gray-100">
 
-  <div class="main-content">
-
-    <!-- Main Content Wrapper to Enable Scrolling -->
-    <div class="main-content">
-      <!-- Welcome Screen -->
-      <section class="welcome-section">
-        <header>
-          <div class="logo-container">
-            <!-- SVG Logo -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" stroke="#FF4500" stroke-width="4">
-              <!-- House Outline -->
-              <path d="M10 50 L50 10 L90 50 L90 90 L10 90 Z" fill="none" />
-              <!-- Heart inside the house -->
-              <path d="M50 55 C40 45, 30 55, 50 75 C70 55, 60 45, 50 55 Z" fill="#FF4500" />
-            </svg>
-          </div>
-          <h1 class="main-header">Familienwerte</h1>
-          <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
-        </header>
-      </section>
-
-      <!-- Audio Player Section -->
-      <section class="audio-section">
-        <SimpleAudioPlayer />
-      </section>
-
-      <!-- Value Sections -->
-      <section v-for="value in translatedValues" :key="value.id" class="value-section" @click="openModal(value)">
-        <div class="value-content">
-          <img :src="value.image" alt="Value Image" class="value-image" />
-          <div class="value-card">
-            <h1>{{ value.name }}</h1>
-            <p>"{{ value.quote }}" - {{ value.author }}</p>
-          </div>
+    <!-- Welcome Section -->
+    <section class="text-center py-12 md:py-16 lg:py-20">
+      <header>
+        <div class="mb-6 relative">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="h-20 md:h-28 mx-auto text-orange-500"
+            fill="none" stroke="currentColor" stroke-width="4">
+            <!-- House Outline -->
+            <path d="M10 50 L50 10 L90 50 L90 90 L10 90 Z" fill="none" />
+            <!-- Heart inside the house -->
+            <path class="heart-hover-animation" d="M50 55 C40 45, 30 55, 50 75 C70 55, 60 45, 50 55 Z"
+              fill="currentColor" />
+          </svg>
         </div>
-      </section>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-100 mb-4">
+          Familienwerte
+        </h1>
+        <p class="text-xl md:text-2xl lg:text-3xl text-gray-400">
+          Unsere Familienwerte sind der Kern dessen, was uns verbindet und leitet. Sie geben unserem Handeln, unserer
+          Erziehung und unserem Miteinander eine klare Richtung und fördern ein harmonisches Zusammenleben. Indem wir
+          diese Werte bewusst leben, schaffen wir ein starkes Fundament für unsere Familie.
+        </p>
+      </header>
+    </section>
 
-      <!-- Modal for Detailed View -->
-      <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
-    </div>
+    <!-- Value Sections -->
+    <section
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4 md:px-8 lg:px-12 w-full max-w-screen-xl mx-auto mt-6 mb-16">
+      <div v-for="(value, index) in translatedValues" :key="index" @click="openModal(value)"
+        class="cursor-pointer transform transition-transform duration-600 hover:scale-105">
+        <ValueSection :value="value" class="p-6 rounded-lg shadow-md" />
+      </div>
+    </section>
+
+    <!-- Footer with improved design -->
+    <footer class="text-gray-400 py-10 mt-auto">
+      <div
+        class="container mx-auto flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-6 md:space-y-0 px-4 md:px-10 lg:px-20">
+        <div class="space-y-2 md:space-y-3">
+          <p class="text-lg font-semibold">Wer</p>
+          <p class="text-xl">Familie Wiedenbrueg</p>
+        </div>
+        <div class="space-y-2 md:space-y-3">
+          <p class="text-lg font-semibold">Warum</p>
+          <p class="text-xl">
+            Zur Erinnerung an die Werte, die wir uns gesetzt haben, und warum wir sie gewählt haben.
+          </p>
+        </div>
+        <div class="text-lg md:text-right space-y-2 md:space-y-3">
+          <p class="text-xl">&copy; 2024 Wiedenbrueg</p>
+          <p class="text-lg">All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal for Detailed View -->
+    <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
+
+    <!-- Close Button for Modal -->
+    <button v-if="showModal" @click="closeModal"
+      class="fixed top-4 md:top-6 lg:top-8 right-4 md:right-6 lg:right-8 p-3 bg-white text-gray-900 rounded-full shadow-lg hover:bg-gray-200 focus:outline-none">
+      ✕
+    </button>
+
   </div>
-
-  <!-- Footer -->
-  <footer class="footer-section">
-    <div class="footer-left">
-      <p class="footer-header">Who</p>
-      <p class="footer-text">Familie Wiedenbrueg</p>
-      <p class="footer-header">Why</p>
-      <p class="footer-text">
-        To keep in mind the values we gave our self and why we have chosen them.
-      </p>
-    </div>
-    <div class="footer-right">
-      <p class="footer-legal">
-        © 2024 Wiedenbrueg <br />
-        All rights reserved.
-      </p>
-    </div>
-  </footer>
 </template>
 
 <script>
 import Modal from './components/ModalComponent.vue'
-import SimpleAudioPlayer from './components/SimpleAudioPlayer.vue'
+import ValueSection from './components/ValueSection.vue'
 import { valuesContent } from './valuesContent.js'
 
 export default {
   components: {
     Modal,
-    SimpleAudioPlayer
+    ValueSection
   },
   data() {
     return {
@@ -85,243 +86,71 @@ export default {
   },
   computed: {
     translatedValues() {
-      return valuesContent[this.language]
+      return valuesContent[this.language];
     }
   },
   methods: {
-    setLanguage(lang) {
-      this.language = lang
-      localStorage.setItem('selectedLanguage', lang) // Persist language choice
-    },
     openModal(value) {
-      this.showModal = true
-      this.selectedValue = value
+      this.showModal = true;
+      this.selectedValue = value;
     },
     closeModal() {
-      this.showModal = false
-      this.selectedValue = null
-    }
-  },
-  created() {
-    const savedLanguage = localStorage.getItem('selectedLanguage')
-    if (savedLanguage) {
-      this.language = savedLanguage
+      this.showModal = false;
+      this.selectedValue = null;
     }
   }
 }
 </script>
 
 <style scoped>
-/* General Styles */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  font-size: 16px;
+/* Heart Animation on Hover */
+.heart-hover-animation {
+  transition: transform 0.3s ease-in-out;
 }
 
-.main-content {
-  grid-row: 1;
-  grid-column: 1 / -1;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-bottom: 20px;
+.heart-hover-animation:hover {
+  transform: scale(1.2) rotate(15deg);
 }
 
-.welcome-section {
-  text-align: center;
-  padding: 50px 20px;
-  margin-bottom: 30px;
-}
-
-.logo-container {
-  margin-bottom: 20px;
-}
-
-.main-header {
-  font-size: 5em;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
-
-.subtitle {
-  font-size: 1.5em;
-  color: #555;
-  margin-bottom: 0;
-}
-
-/* Audio Section */
-.audio-section {
-  text-align: center;
-  margin: 20px auto;
-  padding: 10px 0;
-}
-
-/* Language Switcher in Top Right */
-.language-switcher {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.language-switcher button {
-  margin: 0 5px;
-  padding: 8px 16px;
-  background-color: #6a11cb;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s ease;
-}
-
-.language-switcher button:hover {
-  background-color: #2575fc;
-}
-
-.language-switcher button:focus-visible {
-  outline: 2px solid #2575fc;
-}
-
-/* Value Section Styling */
-.value-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  max-width: 100%;
-  margin: 20px auto;
-  flex-wrap: wrap;
-  cursor: pointer;
-}
-
-.value-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  flex-wrap: wrap;
-}
-
-.value-image {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.value-card {
-  background: linear-gradient(45deg, #8b0000, #ff6347);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 350px;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 10px;
-  overflow: hidden;
-  transition: transform 1.3s ease, box-shadow 0.8s ease;
-}
-
-.value-section:nth-child(even) .value-content {
-  flex-direction: column;
-}
-
-.value-section:hover .value-card {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive Styling */
-@media (max-width: 768px) {
-  .value-section {
-    padding: 10px;
-    margin: 10px auto;
-    width: 100%;
-  }
-
-  .value-content {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .value-image,
-  .value-card {
-    width: 100%;
-  }
-
-  .value-card {
-    margin-top: 20px;
-    padding: 15px;
-  }
-
-  footer.footer-section {
-    position: static;
-    padding: 10px;
-  }
-
-  .footer-left,
-  .footer-right {
-    width: 100%;
-    text-align: center;
-    margin-top: 10px;
-  }
-}
-
-/* Footer styling */
-footer.footer-section {
-  grid-row: 2;
-  grid-column: 1 / -1;
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
+/* Simplified Card Style */
+.ValueSection {
   background-color: #1a1a1a;
-  color: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ValueSection:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+/* Footer Spacing */
+footer {
+  margin-top: 4rem;
+  padding: 2rem;
+  background-color: #1a1a1a;
+}
+
+button.fixed {
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
   align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  z-index: 10;
-  margin-top: auto;
-  clear: both;
-}
-
-.footer-left {
-  text-align: left;
-}
-
-.footer-right {
-  text-align: right;
-  color: #ccc;
-}
-
-.footer-header {
-  font-size: 1em;
-  color: #f8f5f5;
+  justify-content: center;
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 5px;
+  color: #444;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.footer-text {
-  font-size: 1.2em;
-  color: #c0b09c;
-  margin-bottom: 5px;
-}
-
-.footer-legal {
-  font-size: 1em;
-  color: #ccc;
+button.fixed:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
 }
 </style>
