@@ -45,6 +45,12 @@ import gratitudeRelationshipGraph from '@/assets/graphs/dankbar/gratitude_relati
 import gratitudeSustainabilityGraph from '@/assets/graphs/dankbar/gratitude_sustainability.png'
 import gratitudeWorkplaceGraph from '@/assets/graphs/dankbar/gratitude_workplace.png'
 
+// Importing images for "Dankbar" value stories
+import viktorFranklImage from '@/assets/images/dankbar/viktor_frankl.webp'
+import mayaAngelouImage from '@/assets/images/dankbar/maya_angelou.webp'
+import nickVujicicImage from '@/assets/images/dankbar/nick_vujicic.webp'
+import sherylSandbergImage from '@/assets/images/dankbar/sheryl_sandberg.webp'
+
 export const valuesContent = {
   de: [
     {
@@ -297,24 +303,32 @@ export const valuesContent = {
       ],
       stories: [
         {
-          title: 'Oprah Winfreys Dankbarkeitstagebuch',
+          title: 'Viktor Frankl: Dankbarkeit im Angesicht des Unvorstellbaren',
           content:
-            'Oprah Winfrey schreibt einen Großteil ihres Erfolgs dem Führen eines Dankbarkeitstagebuchs zu, in dem sie regelmäßig über die Dinge nachdenkt, für die sie dankbar ist. Dies half ihr, auch in schwierigen Zeiten eine positive Perspektive zu bewahren.'
+            'Der Holocaust-Überlebende und Psychiater Viktor Frankl entwickelte die Logotherapie, die auf der Idee basiert, dass der Sinn des Lebens selbst in den schwersten Umständen gefunden werden kann. In seiner Gefangenschaft fand Frankl kleine Momente der Dankbarkeit, die ihm halfen, das Unerträgliche zu ertragen und schließlich zu überleben. Frankl’s Leben zeigt, wie Dankbarkeit als Kraftquelle dienen kann, um auch die größten Herausforderungen zu meistern.',
+          image: viktorFranklImage,
+          dataLink: 'https://www.biography.com/scholar/viktor-frankl'
         },
         {
-          title: 'Die Praxis der Dankbarkeit von Albert Schweitzer',
+          title: 'Maya Angelou: Dankbarkeit trotz Widrigkeiten',
           content:
-            'Albert Schweitzer, der berühmte Arzt und Philosoph, lebte nach dem Prinzip der Dankbarkeit. Seine Arbeit in Afrika und sein Engagement für das Wohl der Menschen und Tiere spiegeln seine tiefe Dankbarkeit und sein Engagement für das Leben wider.'
+            'Maya Angelou, die berühmte Dichterin und Bürgerrechtlerin, wuchs in einer Zeit tiefer Rassentrennung und persönlicher Not auf. Trotzdem kultivierte sie eine Haltung der Dankbarkeit, die sich in ihrer Arbeit und ihrem Leben widerspiegelte. Ihre Fähigkeit, Schönheit und Bedeutung in den kleinsten Dingen zu finden, inspiriert bis heute Millionen von Menschen.',
+          image: mayaAngelouImage,
+          dataLink: 'https://www.biography.com/writer/maya-angelou'
         },
         {
-          title: 'Der Erfolg von Gary Vaynerchuks „Thank You Economy“',
+          title: 'Nick Vujicic: Leben ohne Grenzen',
           content:
-            'In seinem Buch „The Thank You Economy“ erklärt Gary Vaynerchuk, wie Unternehmen durch Dankbarkeit und echte Wertschätzung gegenüber ihren Kunden langfristigen Erfolg sichern können. Diese Philosophie hat die Art und Weise, wie Unternehmen mit ihren Kunden interagieren, revolutioniert.'
+            'Nick Vujicic wurde ohne Arme und Beine geboren, doch anstatt in Selbstmitleid zu verfallen, entwickelte er eine tiefe Dankbarkeit für das Leben, die ihn zu einem der weltweit bekanntesten Motivationsredner machte. Vujicic zeigt, dass Dankbarkeit nicht von äußeren Umständen abhängt, sondern eine innere Haltung ist, die uns erlaubt, ein erfülltes Leben zu führen, egal unter welchen Bedingungen.',
+          image: nickVujicicImage,
+          dataLink: 'https://www.nickvujicic.com/'
         },
         {
-          title: 'Anne Franks „Trotz allem“',
+          title: 'Sheryl Sandberg: Dankbarkeit nach Verlust',
           content:
-            'Trotz der Schrecken, die sie erlebte, zeigte Anne Frank in ihrem Tagebuch eine bemerkenswerte Dankbarkeit für die kleinen Freuden des Lebens. Ihre Worte erinnern uns daran, auch in dunklen Zeiten dankbar zu bleiben und das Licht in den einfachen Dingen zu sehen.'
+            'Nach dem plötzlichen Tod ihres Mannes schrieb Sheryl Sandberg, die COO von Facebook, das Buch „Option B“, in dem sie über den Umgang mit Trauer und den Wiederaufbau des Lebens spricht. Sie fand Kraft in der Dankbarkeit für die Unterstützung, die sie von ihrer Familie und Freunden erhielt. Sandberg’s Geschichte zeigt, wie Dankbarkeit helfen kann, nach einem tiefen Verlust wieder Hoffnung und Freude im Leben zu finden.',
+          image: sherylSandbergImage,
+          dataLink: 'https://optionb.org/book'
         }
       ]
     }

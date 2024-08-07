@@ -1,9 +1,9 @@
 <template>
-  <!-- Language Switcher in Top Right>
+  <!-- Language Switcher in Top Right-->
   <div class="language-switcher">
     <button @click="setLanguage('en')" aria-label="Set language to English">EN</button>
     <button @click="setLanguage('de')" aria-label="Set language to German">DE</button>
-  </div-->
+  </div>
 
   <div class="main-content">
 
@@ -20,8 +20,6 @@
               <!-- Heart inside the house -->
               <path d="M50 55 C40 45, 30 55, 50 75 C70 55, 60 45, 50 55 Z" fill="#FF4500" />
             </svg>
-
-
           </div>
           <h1 class="main-header">Familienwerte</h1>
           <p class="subtitle">Dies sind die Werte welche uns in unserem Zusammenleben begleiten.</p>
@@ -48,6 +46,7 @@
       <Modal v-if="showModal" :show="showModal" :selected-value="selectedValue" @close-modal="closeModal"></Modal>
     </div>
   </div>
+
   <!-- Footer -->
   <footer class="footer-section">
     <div class="footer-left">
@@ -121,6 +120,7 @@ body {
   padding: 0;
   display: flex;
   flex-direction: column;
+  font-size: 16px;
 }
 
 .main-content {
@@ -144,13 +144,13 @@ body {
 }
 
 .main-header {
-  font-size: 7em;
+  font-size: 5em;
   margin-bottom: 10px;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .subtitle {
-  font-size: 2em;
+  font-size: 1.5em;
   color: #555;
   margin-bottom: 0;
 }
@@ -170,8 +170,8 @@ body {
 }
 
 .language-switcher button {
-  margin: 0 10px;
-  padding: 10px 18px;
+  margin: 0 5px;
+  padding: 8px 16px;
   background-color: #6a11cb;
   color: white;
   border: none;
@@ -194,8 +194,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  max-width: 1200px;
+  padding: 15px;
+  max-width: 100%;
   margin: 20px auto;
   flex-wrap: wrap;
   cursor: pointer;
@@ -210,8 +210,8 @@ body {
 }
 
 .value-image {
-  width: 40%;
-  max-width: 400px;
+  width: 100%;
+  max-width: 300px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -221,21 +221,21 @@ body {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  width: 50%;
-  max-width: 500px;
-  height: 250px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 20px;
+  margin: 10px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 1.3s ease, box-shadow 0.8s ease;
 }
 
 .value-section:nth-child(even) .value-content {
-  flex-direction: row-reverse;
+  flex-direction: column;
 }
 
 .value-section:hover .value-card {
@@ -245,6 +245,12 @@ body {
 
 /* Responsive Styling */
 @media (max-width: 768px) {
+  .value-section {
+    padding: 10px;
+    margin: 10px auto;
+    width: 100%;
+  }
+
   .value-content {
     flex-direction: column;
     align-items: center;
@@ -253,11 +259,11 @@ body {
   .value-image,
   .value-card {
     width: 100%;
-    max-width: 100%;
   }
 
   .value-card {
     margin-top: 20px;
+    padding: 15px;
   }
 
   footer.footer-section {
@@ -285,7 +291,7 @@ footer.footer-section {
   background-color: #1a1a1a;
   color: #fff;
   align-items: center;
-  width: 100% I;
+  width: 100%;
   box-sizing: border-box;
   z-index: 10;
   margin-top: auto;
