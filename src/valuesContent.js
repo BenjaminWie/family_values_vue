@@ -15,16 +15,10 @@ import familyTrustLevelsGraph from '@/assets/graphs/gemeinsam/family_trust_level
 import familySatisfactionGraph from '@/assets/graphs/gemeinsam/family_satisfaction.png'
 import innovationOutputGraph from '@/assets/graphs/gemeinsam/innovation_output.png'
 
-// Jacksons-inspired family image
+// Importing images for "Verantwortlich" value stories
 import jacksonFamilyImage from '@/assets/images/gemeinsam/jackson_family.webp'
-
-// Obama-inspired family image
 import obamaFamilyImage from '@/assets/images/gemeinsam/obama_family.webp'
-
-// Mannings-inspired family image
 import manningFamilyImage from '@/assets/images/gemeinsam/manning_family.webp'
-
-// Kennedys-inspired family image
 import kennedyFamilyImage from '@/assets/images/gemeinsam/kennedy_family.webp'
 
 // Graph images for "Verantwortlich"
@@ -32,6 +26,12 @@ import ghgReductionGraph from '@/assets/graphs/verantwortlich/ghg_reduction.png'
 import sustainableRoiGraph from '@/assets/graphs/verantwortlich/sustainable_roi.png'
 import wealthDisparityGraph from '@/assets/graphs/verantwortlich/wealth_disparity.png'
 import ethicalTechGraph from '@/assets/graphs/verantwortlich/ethical_tech.png'
+
+// Importing images for "Verantwortlich" value stories
+import wangariMaathaiImage from '@/assets/images/verantwortlich/wangari_maathai.webp'
+import muhammadYunusImage from '@/assets/images/verantwortlich/muhammad_yunus.webp'
+import malalaYousafzaiImage from '@/assets/images/verantwortlich/malala_yousafzai.webp'
+import timBernersLeeImage from '@/assets/images/verantwortlich/tim_berners_lee.webp'
 
 // Graph images for "Dankbar"
 import gratitudeStressGraph from '@/assets/graphs/dankbar/gratitude_stress.png'
@@ -214,24 +214,32 @@ export const valuesContent = {
       ],
       stories: [
         {
-          title: 'Nelson Mandelas Vermächtnis',
+          title: 'Wangari Maathai: Die grüne Revolution',
           content:
-            'Nelson Mandela trug maßgeblich dazu bei, das Apartheid-Regime in Südafrika zu beenden. Seine Verantwortung für sein Volk und seine unermüdliche Arbeit für Versöhnung und Gerechtigkeit machen ihn zu einer der bedeutendsten Persönlichkeiten des 20. Jahrhunderts.'
+            'Wangari Maathai war die erste afrikanische Frau, die einen Friedensnobelpreis erhielt, und Gründerin des Green Belt Movements, einer Initiative zur Wiederaufforstung in Kenia. Maathai setzte sich unermüdlich für Nachhaltigkeit und Frauenrechte ein, indem sie Gemeinden dazu ermutigte, Bäume zu pflanzen und gleichzeitig ihre wirtschaftliche Unabhängigkeit zu fördern. Ihre Arbeit zeigt, wie Verantwortung für die Umwelt und soziale Gerechtigkeit zu tiefgreifenden Veränderungen führen kann.',
+          image: wangariMaathaiImage,
+          dataLink: 'https://www.nobelprize.org/prizes/peace/2004/maathai/biographical/'
         },
         {
-          title: 'Greta Thunbergs globale Klimabewegung',
+          title: 'Muhammad Yunus: Mikrofinanzierung gegen Armut',
           content:
-            'Greta Thunberg hat mit ihrem Streik für das Klima eine weltweite Bewegung ins Leben gerufen, die Millionen junger Menschen inspiriert hat, sich für den Schutz unseres Planeten einzusetzen. Sie zeigt, wie Einzelpersonen durch Übernahme von Verantwortung einen globalen Wandel anstoßen können.'
+            "Muhammad Yunus, Gründer der Grameen Bank, revolutionierte die Finanzwelt durch die Einführung von Mikrokrediten, die es den Ärmsten der Armen ermöglichen, kleine Unternehmen zu gründen und sich aus der Armut zu befreien. Seine Arbeit hat Millionen von Menschen, vor allem Frauen, die Chance gegeben, ein selbstbestimmtes Leben zu führen. Yunus' Ansatz zeigt, wie wirtschaftliche Verantwortung und soziale Innovation zur Bekämpfung globaler Ungleichheit beitragen können.",
+          image: muhammadYunusImage,
+          dataLink: 'https://www.nobelprize.org/prizes/peace/2006/yunus/facts/'
         },
         {
-          title: 'Jane Goodalls Einsatz für den Artenschutz',
+          title: 'Malala Yousafzai: Ein Mädchen, das die Welt veränderte',
           content:
-            'Jane Goodall hat ihr Leben dem Schutz von Schimpansen und der Umwelt gewidmet. Ihr Engagement für Tiere und Natur zeigt, wie Verantwortung auf globaler Ebene dazu beitragen kann, das Leben auf der Erde zu bewahren.'
+            'Malala Yousafzai kämpfte mutig für das Recht auf Bildung, insbesondere für Mädchen, in Regionen, in denen dies eine gefährliche Mission war. Ihr unerschütterlicher Glaube an die Bedeutung der Bildung und ihre Bereitschaft, Verantwortung zu übernehmen, selbst unter Lebensgefahr, haben sie zu einer globalen Ikone gemacht. Ihre Geschichte ist ein kraftvolles Beispiel dafür, wie die Verantwortung für grundlegende Menschenrechte die Welt verändern kann.',
+          image: malalaYousafzaiImage,
+          dataLink: 'https://malala.org/malalas-story'
         },
         {
-          title: 'Der Erfolg von B-Corps',
+          title: 'Tim Berners-Lee: Technologie für das Gemeinwohl',
           content:
-            'B-Corps sind Unternehmen, die sich durch hohe Standards in den Bereichen soziale Verantwortung und ökologische Nachhaltigkeit auszeichnen. Sie zeigen, dass es möglich ist, wirtschaftlichen Erfolg mit ethischer Verantwortung zu vereinen.'
+            'Tim Berners-Lee, der Erfinder des World Wide Web, stellte seine Erfindung der Welt kostenlos zur Verfügung, um den Zugang zu Informationen für alle Menschen zu erleichtern. Seine Vision von einem freien und offenen Internet zeigt, wie Technologie verantwortungsvoll eingesetzt werden kann, um das Gemeinwohl zu fördern und die Welt zu vernetzen. Berners-Lee’s Beitrag ist ein inspirierendes Beispiel dafür, wie verantwortungsvolle Innovation das Leben von Milliarden von Menschen verbessern kann.',
+          image: timBernersLeeImage,
+          dataLink: 'https://www.webfoundation.org/about/vision/history-of-the-web/'
         }
       ]
     },
