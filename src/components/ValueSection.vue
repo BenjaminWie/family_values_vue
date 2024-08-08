@@ -4,7 +4,7 @@
         <img :src="value.image" alt="Value Image" class="absolute inset-0 w-full h-full object-cover opacity-30" />
         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
         <div class="relative z-10 text-center p-4 md:p-6">
-            <h2 class="text-3xl md:text-4xl font-bold mb-2 md:mb-4">{{ value.name }}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-2 md:mb-4 text-orange-500">{{ value.name }}</h2>
             <blockquote class="text-xl md:text-2xl font-light italic mb-4 md:mb-6">“{{ value.quote }}”</blockquote>
             <p class="text-lg md:text-xl">- {{ value.author }}</p>
         </div>
