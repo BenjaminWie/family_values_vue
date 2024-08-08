@@ -14,7 +14,8 @@
               d="M50 55 C40 45, 30 55, 50 75 C70 55, 60 45, 50 55 Z" fill="currentColor" />
           </svg>
         </div>
-        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-100 mb-4">
+        <h1
+          class="hover:animate-bounce text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-100 mb-4">
           Familienwerte
         </h1>
         <p class="text-xl md:text-2xl lg:text-3xl text-gray-400">
@@ -37,7 +38,8 @@
     <!-- Audio Section -->
     <section class="flex justify-center items-center py-6 md:py-8 lg:py-10">
       <h2 class="felx-1 text-3xl md:text-4xl font-bold mb-2 md:mb-4 text-orange-500">Unser Lied</h2>
-      <audio ref="audioPlayer" :src="audioSrc" controls class="flex-2 w-full max-w-md p-2 rounded-lg shadow-md"></audio>
+      <audio ref="audioPlayer" :src="audioSrc" controls
+        class="hover:animate-bounce flex-2 w-full max-w-md p-2 rounded-lg shadow-md"></audio>
     </section>
 
     <!-- Footer with improved design -->
