@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-const familyAudio = new URL('@/assets/Family.mp3', import.meta.url).href
+const familyAudio = new URL('@/assets/family.mp3', import.meta.url).href
 
 export default defineComponent({
   data() {

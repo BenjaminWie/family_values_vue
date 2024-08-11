@@ -101,8 +101,8 @@ export default {
     // Determine the environment and set the correct audio source
     const isDevelopment = process.env.NODE_ENV === 'development';
     this.audioSrc = isDevelopment
-      ? new URL('@/assets/Family.mp3', import.meta.url).href
-      : '/Family.mp3';
+      ? new URL('@/assets/family.mp3', import.meta.url).href
+      : '/family.mp3';
 
     const audioElement = this.$refs.audioPlayer;
     if (audioElement && audioElement.play) {
