@@ -1,69 +1,96 @@
 <template>
-  <div v-if="show"
-    class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 md:p-8 lg:p-12">
-    <!-- Background click closes modal -->
-    <div @click.self="closeModal" class="absolute inset-0"></div>
+  <transition name="fade">
+    <div v-if="show" class="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-6 lg:p-12 overflow-hidden">
+      <!-- Backdrop with heavy blur -->
+      <div @click="closeModal" class="absolute inset-0 bg-obsidian-dark/95 backdrop-blur-3xl cursor-pointer"></div>
 
-    <!-- Modal Content -->
-    <transition name="modal">
-      <div
-        class="relative bg-gray-800 text-gray-100 rounded-lg shadow-lg w-full max-w-4xl p-6 md:p-8 lg:p-10 overflow-y-auto max-h-full">
+      <!-- Modal Container -->
+      <transition name="slide-up">
+        <div class="relative w-full h-full md:max-h-[90vh] max-w-7xl bg-obsidian-light/50 border border-white/10 shadow-[0_0_100px_rgba(0,0,0,0.8)] rounded-none md:rounded-[3rem] overflow-hidden flex flex-col md:flex-row backdrop-blur-md">
+          
+          <!-- Close Button -->
+          <button @click="closeModal" class="absolute top-8 right-8 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-orange-500 text-white border border-white/10 flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
 
-        <!-- Image of the Value -->
-        <img :src="selectedValue.image" alt="Value Image" class="w-full rounded-lg shadow-md mb-6">
-
-        <div class="mb-6">
-          <!-- Value Name -->
-          <h2 class="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
-            {{ selectedValue.name }}
-          </h2>
-
-          <!-- Quote -->
-          <p class="text-lg md:text-xl lg:text-2xl italic text-gray-300 mb-4">
-            “{{ selectedValue.quote }}”
-          </p>
-
-          <!-- Author -->
-          <p class="text-md md:text-lg lg:text-xl text-gray-400">
-            - {{ selectedValue.author }}
-          </p>
-        </div>
-
-        <hr class="border-gray-600 mb-6">
-
-        <div class="space-y-8">
-          <!-- Story Section -->
-          <div v-if="selectedValue.stories.length" class="mb-8 space-y-8">
-            <h3 class="text-2xl font-semibold mb-4">Stories</h3>
-            <div v-for="(story, index) in selectedValue.stories" :key="index" class="space-y-6">
-              <img :src="story.image" alt="Story Image" class="w-full rounded-lg shadow-md mb-4">
-              <h4 class="text-xl font-semibold text-gray-200">{{ story.title }}</h4>
-              <p class="text-lg text-gray-400">{{ story.content }}</p>
-              <a v-if="story.dataLink" :href="story.dataLink" target="_blank" class="text-teal-400 hover:underline">
-                Read More
-              </a>
+          <!-- Left Column: Hero/Identity (Fixed on desktop) -->
+          <div class="w-full md:w-2/5 relative min-h-[40vh] md:min-h-full">
+            <img :src="selectedValue.image" alt="" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian-dark via-obsidian-dark/40 to-transparent"></div>
+            
+            <div class="absolute bottom-12 left-12 right-12 z-10">
+              <h2 class="text-6xl lg:text-8xl font-black text-white mb-6 uppercase tracking-tighter leading-[0.8]">
+                {{ selectedValue.name }}
+              </h2>
+              <div class="h-1.5 w-24 bg-orange-500 rounded-full mb-8"></div>
+              <blockquote class="text-2xl font-serif italic text-gray-200 mb-6 leading-relaxed">
+                "{{ selectedValue.quote }}"
+              </blockquote>
+              <cite class="text-sm font-bold uppercase tracking-[0.3em] text-orange-400 not-italic">— {{ selectedValue.author }}</cite>
             </div>
           </div>
 
-          <hr class="border-gray-600 mb-6">
+          <!-- Right Column: Narratives & Stories (Scrollable) -->
+          <div class="w-full md:w-3/5 overflow-y-auto custom-scrollbar bg-obsidian-dark/40">
+            <div class="p-8 md:p-16 space-y-24">
+              
+              <!-- Narrative Section -->
+              <div v-if="selectedValue.narratives?.length" class="space-y-12">
+                <header class="flex items-center gap-6">
+                  <span class="text-4xl font-black text-white/10 uppercase">01</span>
+                  <h3 class="text-3xl font-bold tracking-tight text-white uppercase italic">Der Kontext</h3>
+                </header>
+                
+                <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="group relative space-y-8 p-8 rounded-3xl bg-white/5 border border-white/5 transition-all hover:border-white/10 hover:bg-white/10">
+                  <div class="aspect-video overflow-hidden rounded-2xl border border-white/10">
+                    <img :src="narrative.image" alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  </div>
+                  <div class="space-y-4">
+                    <h4 class="text-xl font-bold text-orange-400">{{ narrative.title }}</h4>
+                    <p class="text-lg text-gray-400 leading-relaxed font-light">{{ narrative.content }}</p>
+                    <a v-if="narrative.dataLink" :href="narrative.dataLink" target="_blank" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white/60 hover:text-orange-400 transition-colors">
+                      Studie ansehen
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-          <!-- Narrative Section -->
-          <div v-if="selectedValue.narratives.length" class="space-y-8">
-            <h3 class="text-2xl font-semibold mb-4">Narratives</h3>
-            <div v-for="(narrative, index) in selectedValue.narratives" :key="index" class="space-y-6">
-              <img :src="narrative.image" alt="Narrative Image" class="w-full rounded-lg shadow-md mb-4">
-              <h4 class="text-xl font-semibold text-gray-200">{{ narrative.title }}</h4>
-              <p class="text-lg text-gray-400">{{ narrative.content }}</p>
-              <a v-if="narrative.dataLink" :href="narrative.dataLink" target="_blank"
-                class="text-teal-400 hover:underline">
-                Validate the Data
-              </a>
+              <!-- Stories Section -->
+              <div v-if="selectedValue.stories?.length" class="space-y-12">
+                <header class="flex items-center gap-6">
+                  <span class="text-4xl font-black text-white/10 uppercase">02</span>
+                  <h3 class="text-3xl font-bold tracking-tight text-white uppercase italic">Inspiration</h3>
+                </header>
+                
+                <div v-for="(story, index) in selectedValue.stories" :key="index" class="space-y-12">
+                  <div class="flex flex-col gap-8 group">
+                    <div class="aspect-square w-full md:w-48 overflow-hidden rounded-full border-4 border-white/10 group-hover:border-orange-500 transition-colors duration-500 shrink-0 mx-auto md:mx-0">
+                      <img :src="story.image" alt="" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="space-y-6">
+                      <h4 class="text-2xl font-black text-white">{{ story.title }}</h4>
+                      <p class="text-lg text-gray-400 leading-relaxed font-light italic">
+                        {{ story.content }}
+                      </p>
+                      <a v-if="story.dataLink" :href="story.dataLink" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-white/10 hover:border-orange-500 hover:text-orange-500 transition-all">
+                        Biografie
+                      </a>
+                    </div>
+                  </div>
+                  <hr v-if="index < selectedValue.stories.length - 1" class="border-white/5" />
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-      </div>
-    </transition>
-  </div>
+      </transition>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -81,76 +108,36 @@ export default {
 </script>
 
 <style scoped>
-/* Modal Animation */
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-.modal-enter,
-.modal-leave-to {
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from, .fade-leave-to {
   opacity: 0;
-  transform: translateY(-10px);
 }
 
-/* Close Button Styling */
-button.fixed {
-  z-index: 1000;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #444;
-  border: 2px solid #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-button.fixed:hover {
-  background-color: rgba(255, 255, 255, 1);
-  transform: scale(1.1);
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
 }
-
-/* General Spacing */
-.modal-content {
-  padding: 1.5rem;
-  background-color: #1a1a1a;
-  border-radius: 12px;
-  max-width: 90vw;
-  margin: auto;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Typography Adjustments */
-h2 {
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 1.5rem;
-}
-
-p {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-h3 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-h4 {
-  font-size: 1.375rem;
-  font-weight: 600;
-}
-
-a {
-  color: #38b2ac;
-  font-weight: 500;
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(20px) scale(1.02);
 }
 </style>
